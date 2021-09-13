@@ -7,19 +7,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Login">
    <children>
-      <ImageView fitHeight="116.0" fitWidth="344.0" layoutX="128.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="idTF" layoutX="205.0" layoutY="177.0" prefHeight="36.0" prefWidth="216.0" />
+      <Label layoutX="112.0" layoutY="261.0" prefHeight="46.0" prefWidth="78.0" text="Password:">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <Button fx:id="joinBtn" layoutX="251.0" layoutY="335.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="124.0" text="Join" />
+      <PasswordField fx:id="passwordPF" layoutX="208.0" layoutY="268.0" prefHeight="36.0" prefWidth="216.0" />
+      <ImageView fitHeight="79.0" fitWidth="319.0" layoutX="141.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Downloads/LaCucharita.PNG" />
+            <Image url="@../../loginImage.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="196.0" layoutY="191.0" prefHeight="22.0" prefWidth="253.0" />
-      <Label layoutX="120.0" layoutY="177.0" prefHeight="46.0" prefWidth="29.0" text="Id:" />
-      <Label layoutX="112.0" layoutY="261.0" prefHeight="46.0" prefWidth="78.0" text="Password:" />
-      <Button layoutX="251.0" layoutY="335.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="124.0" text="Join" />
-      <PasswordField layoutX="197.0" layoutY="268.0" prefHeight="31.0" prefWidth="253.0" />
+      <Label layoutX="138.0" layoutY="172.0" prefHeight="46.0" prefWidth="26.0" text="ID:">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
