@@ -20,8 +20,4 @@ public class Restaurant {
     public EmployeesInventory getEmployeesInventory() {
         return employeesInventory;
     }
-
-    public void setEmployeesInventory(EmployeesInventory employeesInventory) {
-        this.employeesInventory = employeesInventory;
-    }
 }
