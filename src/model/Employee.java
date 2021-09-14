@@ -2,6 +2,11 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ * This class contains the attributes and methods of a employee
+ * @author Alexander Echeverry
+ * @version 1.0
+ */
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;

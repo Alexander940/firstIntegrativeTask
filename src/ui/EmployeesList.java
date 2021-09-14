@@ -10,6 +10,11 @@ import model.Employee;
 
 import javafx.scene.control.TableColumn;
 
+/**
+ * This class controls the window that it shows the employee's list
+ * @author Alexander Echeverry
+ * @version 1.0
+ */
 public class EmployeesList extends Stage {
 
     private TableView<Employee> table;
@@ -43,6 +48,9 @@ public class EmployeesList extends Stage {
         }
     }
 
+    /**
+     * this method execute the actions of fxml components
+     */
     private void init(){
 
     }

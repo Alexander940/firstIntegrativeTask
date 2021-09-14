@@ -2,6 +2,11 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ * This class contains the attributes of methods of an ingredient
+ * @author David Molta
+ * @version 1.0
+ */
 public class Ingredient implements Serializable {
 
     private static final long serialVersionUID = 1L;

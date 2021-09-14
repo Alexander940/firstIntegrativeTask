@@ -2,6 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * This class contains the attributes and methods of a saucer
+ * @author Alexander Echeverry
+ * @version 1.0
+ */
 public class Saucer {
 
     private String name;
