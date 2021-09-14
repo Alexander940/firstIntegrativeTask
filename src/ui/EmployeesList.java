@@ -16,7 +16,7 @@ public class EmployeesList extends Stage {
 
     public EmployeesList() {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeesList"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeesList.fxml"));
             Parent root = loader.load();
 
             table = (TableView) loader.getNamespace().get("table");
@@ -24,9 +24,9 @@ public class EmployeesList extends Stage {
             TableColumn<Employee, String> usernameColum = new TableColumn("Username");
             TableColumn<Employee, String> idColum = new TableColumn("ID");
             TableColumn<Employee, String> dateOfBirthColum = new TableColumn("Date of birth");
-            TableColumn<Employee, String> passwordColum = new TableColumn("Date of birth");
+            TableColumn<Employee, String> passwordColum = new TableColumn("Password");
 
-            usernameColum.setCellValueFactory(new PropertyValueFactory<>("username"));
+            usernameColum.setCellValueFactory(new PropertyValueFactory<>("name"));
             idColum.setCellValueFactory(new PropertyValueFactory<>("id"));
             dateOfBirthColum.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
             passwordColum.setCellValueFactory(new PropertyValueFactory<>("password"));

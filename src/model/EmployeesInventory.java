@@ -20,7 +20,7 @@ public class EmployeesInventory implements Serializable {
     private ObservableList<Employee> employees;
 
     public EmployeesInventory() {
-        this.employees = FXCollections.observableArrayList();
+        this.employees = loadEmployees();
     }
 
     /**
@@ -45,7 +45,7 @@ public class EmployeesInventory implements Serializable {
 
     /**
      * this method gets the employees of a file
-     * @return this returns a observable list with the employees
+     * @return this returns an observable list with the employees
      */
     private ObservableList<Employee> loadEmployees(){
         try {

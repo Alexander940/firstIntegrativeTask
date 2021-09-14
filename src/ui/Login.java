@@ -15,6 +15,8 @@ public class Login extends Stage {
     private PasswordField passwordPF;
     private Button joinBtn;
 
+    private AdministratorWindow administratorWindow;
+
     public Login(){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
@@ -36,7 +38,7 @@ public class Login extends Stage {
 
     private void init(){
         joinBtn.setOnAction(event->{
-            AdministratorWindow administratorWindow = new AdministratorWindow();
+            administratorWindow = new AdministratorWindow();
             administratorWindow.show();
         });
 

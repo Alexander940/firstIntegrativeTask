@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class AdministratorWindow extends Stage {
 
-    private MenuItem addEmployeeItem, showListEmployeeItem, changePasswordItem;
+    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem;
     private EmployeesList employeesList;
     private AddEmployee addEmployee;
 
@@ -18,7 +18,7 @@ public class AdministratorWindow extends Stage {
             Parent root = loader.load();
 
             addEmployeeItem = (MenuItem) loader.getNamespace().get("addEmployeeItem");
-            showListEmployeeItem = (MenuItem) loader.getNamespace().get("showListEmployeeItem");
+            showListEmployeesItem = (MenuItem) loader.getNamespace().get("showListEmployeesItem");
             changePasswordItem = (MenuItem) loader.getNamespace().get("changePasswordItem");
 
             Scene scene = new Scene(root, 600, 400);
@@ -36,7 +36,7 @@ public class AdministratorWindow extends Stage {
             addEmployee.show();
         });
 
-        showListEmployeeItem.setOnAction(e -> {
+        showListEmployeesItem.setOnAction(e -> {
             employeesList = new EmployeesList();
             employeesList.show();
         });
