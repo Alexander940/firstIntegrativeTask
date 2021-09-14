@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddEmployee">
+   <children>
+      <Label layoutX="164.0" layoutY="40.0" text="Create Employee Account">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="163.0" layoutY="122.0" text="Name:" />
+      <Label layoutX="173.0" layoutY="179.0" text="ID:" />
+      <Label layoutX="153.0" layoutY="228.0" text="Date of birth" />
+      <Label layoutX="156.0" layoutY="273.0" text="Password" />
+      <Label layoutX="140.0" layoutY="315.0" text="Confirm password" />
+      <TextField fx:id="nameTF" layoutX="260.0" layoutY="118.0" />
+      <TextField fx:id="idTF" layoutX="260.0" layoutY="175.0" />
+      <DatePicker fx:id="dateDP" layoutX="260.0" layoutY="224.0" />
+      <PasswordField fx:id="passwordPF" layoutX="260.0" layoutY="269.0" />
+      <PasswordField fx:id="confirmPasswordPF" layoutX="260.0" layoutY="311.0" />
+      <Button fx:id="createBtn" layoutX="260.0" layoutY="350.0" mnemonicParsing="false" text="Create" />
+   </children>
+</AnchorPane>

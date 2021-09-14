@@ -3,19 +3,24 @@ package ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class AdministratorWindow extends Stage {
-    Button inventoryGO,personalGO,orderGO,menuGO;
+
+    private MenuItem addEmployeeItem, showListEmployeeItem, changePasswordItem;
+    private EmployeesList employeesList;
+    private AddEmployee addEmployee;
+
     public AdministratorWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminitratorWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdministratorWindow.fxml"));
             Parent root = loader.load();
-            inventoryGO = (Button) loader.getNamespace().get("inventoryGO");
-            personalGO = (Button) loader.getNamespace().get("personalGO");
-            orderGO = (Button) loader.getNamespace().get("orderGO");
-            menuGO = (Button) loader.getNamespace().get("menuGO");
+
+            addEmployeeItem = (MenuItem) loader.getNamespace().get("addEmployeeItem");
+            showListEmployeeItem = (MenuItem) loader.getNamespace().get("showListEmployeeItem");
+            changePasswordItem = (MenuItem) loader.getNamespace().get("changePasswordItem");
+
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 
@@ -26,16 +31,17 @@ public class AdministratorWindow extends Stage {
     }
 
     private void init(){
-        inventoryGO.setOnAction(event -> {
-
+        addEmployeeItem.setOnAction(e -> {
+            addEmployee = new AddEmployee();
+            addEmployee.show();
         });
-        personalGO.setOnAction(event -> {
 
+        showListEmployeeItem.setOnAction(e -> {
+            employeesList = new EmployeesList();
+            employeesList.show();
         });
-        orderGO.setOnAction(event -> {
 
-        });
-        menuGO.setOnAction(event -> {
+        changePasswordItem.setOnAction(e -> {
 
         });
     }
