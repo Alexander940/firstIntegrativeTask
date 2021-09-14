@@ -6,6 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
+/**
+ * This class controls the window that it allows manage the program's module
+ * @author David Molta
+ * @version 1.0
+ */
 public class AdministratorWindow extends Stage {
 
     private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem;
@@ -30,6 +35,9 @@ public class AdministratorWindow extends Stage {
         }
     }
 
+    /**
+     * this method execute the actions of fxml components
+     */
     private void init(){
         addEmployeeItem.setOnAction(e -> {
             addEmployee = new AddEmployee();

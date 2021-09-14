@@ -8,6 +8,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * This class controls the initial window
+ * @author Alexander Echeverry
+ * @version 1.0
+ */
 public class Login extends Stage {
 
     //fx declarations
@@ -36,6 +41,9 @@ public class Login extends Stage {
 
     }
 
+    /**
+     * this method execute the actions of fxml components
+     */
     private void init(){
         joinBtn.setOnAction(event->{
             administratorWindow = new AdministratorWindow();
