@@ -20,6 +20,8 @@ public class AdministratorWindow extends Stage {
     private AddEmployee addEmployee;
     private AddIngredient addIngredient;
     private IngredientList ingredientList;
+    private IncreaseIngredient increaseIngredient;
+    private DecreaseIngredient decreaseIngredient;
 
     public AdministratorWindow() {
         try {
@@ -78,11 +80,13 @@ public class AdministratorWindow extends Stage {
         });
 
         increaseIngredientITEM.setOnAction(event -> {
-
+        increaseIngredient = new IncreaseIngredient();
+        increaseIngredient.show();
         });
 
         decreaseIngredientITEM.setOnAction(event -> {
-
+        decreaseIngredient = new DecreaseIngredient();
+        decreaseIngredient.show();
         });
     }
 }

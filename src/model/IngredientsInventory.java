@@ -53,6 +53,11 @@ public class IngredientsInventory implements Serializable {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * Method to load the ingredients that were saved before
+     * @return returns the observable list in order to load the data when the constructor is initializated
+     */
     public ObservableList<Ingredient> loadIngredients(){
         try {
             File ingredientFile = new File("ingredients.txt");
@@ -67,4 +72,29 @@ public class IngredientsInventory implements Serializable {
         }
     }
 
+    /**
+     * Method to increase the number of ingredients
+     * @param ingredientName The name to search the ingredient
+     * @param amount the amount that will be added
+     * @return
+     */
+    public boolean increaseIngredient(String ingredientName,double amount){
+        boolean condition = false;
+
+        for(int i=0;i<ingredients.size();i++){
+
+            if(ingredients.get(i).getName().equals(ingredientName)){
+                double amount1 = ingredients.get(i).getQuantity();
+                amount += amount1;
+                ingredients.get(i).setQuantity(amount);
+
+                condition = true;
+                break;
+            }
+
+        }
+
+        return condition;
+
+    }
 }
