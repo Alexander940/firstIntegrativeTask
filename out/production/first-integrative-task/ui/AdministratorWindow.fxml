@@ -20,7 +20,11 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Inventory module">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="showIngredientITEM" mnemonicParsing="false" text="Show Ingredients" />
+                  <MenuItem fx:id="addIngredientITEM" mnemonicParsing="false" text="Add Ingredient" />
+                  <MenuItem fx:id="increaseIngredientITEM" mnemonicParsing="false" text="Increase Ingredient" />
+                  <MenuItem fx:id="decreaseIngredientITEM" mnemonicParsing="false" text="Decrease Ingredient" />
+                  <MenuItem fx:id="deleteIngredientITEM" mnemonicParsing="false" text="Delete Ingredient" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Orders module">

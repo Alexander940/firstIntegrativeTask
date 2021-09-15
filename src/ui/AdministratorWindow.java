@@ -12,20 +12,29 @@ import javafx.stage.Stage;
  * @version 1.0
  */
 public class AdministratorWindow extends Stage {
-
+    // Menu items for the Personal module
     private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem;
+    // Menu items for the Inventory module
+    private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM;
     private EmployeesList employeesList;
     private AddEmployee addEmployee;
+    private AddIngredient addIngredient;
+    private IngredientList ingredientList;
 
     public AdministratorWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AdministratorWindow.fxml"));
             Parent root = loader.load();
-
+            // Fxml for the Personal module
             addEmployeeItem = (MenuItem) loader.getNamespace().get("addEmployeeItem");
             showListEmployeesItem = (MenuItem) loader.getNamespace().get("showListEmployeesItem");
             changePasswordItem = (MenuItem) loader.getNamespace().get("changePasswordItem");
-
+            // Fxml for the Inventory module
+            addIngredientITEM = (MenuItem) loader.getNamespace().get("addIngredientITEM");
+            increaseIngredientITEM = (MenuItem) loader.getNamespace().get("increaseIngredientITEM");
+            decreaseIngredientITEM =  (MenuItem) loader.getNamespace().get("decreaseIngredientITEM");
+            deleteIngredientITEM = (MenuItem) loader.getNamespace().get("deleteIngredientITEM");
+            showIngredientITEM = (MenuItem) loader.getNamespace().get("showIngredientITEM");
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 
@@ -50,6 +59,29 @@ public class AdministratorWindow extends Stage {
         });
 
         changePasswordItem.setOnAction(e -> {
+
+        });
+        // Action for the Inventory module
+        addIngredientITEM.setOnAction(event -> {
+            addIngredient = new AddIngredient();
+            addIngredient.show();
+        });
+
+
+        showIngredientITEM.setOnAction(event -> {
+        ingredientList = new IngredientList();
+        ingredientList.show();
+        });
+
+        deleteIngredientITEM.setOnAction(event -> {
+
+        });
+
+        increaseIngredientITEM.setOnAction(event -> {
+
+        });
+
+        decreaseIngredientITEM.setOnAction(event -> {
 
         });
     }

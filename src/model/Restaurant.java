@@ -8,9 +8,11 @@ package model;
 public class Restaurant {
 
     private EmployeesInventory employeesInventory;
+    private IngredientsInventory ingredientsInventory;
 
     public Restaurant() {
         this.employeesInventory = new EmployeesInventory();
+        this.ingredientsInventory = new IngredientsInventory();
     }
 
     /**
@@ -21,7 +23,11 @@ public class Restaurant {
         return employeesInventory;
     }
 
-    public void setEmployeesInventory(EmployeesInventory employeesInventory) {
-        this.employeesInventory = employeesInventory;
+    /**
+     * this method will return an employee's inventory
+     * @return this contains the ingredient's inventory
+     */
+    public IngredientsInventory getIngredientsInventory(){
+        return ingredientsInventory;
     }
 }
