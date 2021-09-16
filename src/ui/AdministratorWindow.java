@@ -22,6 +22,7 @@ public class AdministratorWindow extends Stage {
     private IngredientList ingredientList;
     private IncreaseIngredient increaseIngredient;
     private DecreaseIngredient decreaseIngredient;
+    private DeleteIngredient deleteIngredient;
 
     public AdministratorWindow() {
         try {
@@ -76,7 +77,8 @@ public class AdministratorWindow extends Stage {
         });
 
         deleteIngredientITEM.setOnAction(event -> {
-
+        deleteIngredient = new DeleteIngredient();
+        deleteIngredient.show();
         });
 
         increaseIngredientITEM.setOnAction(event -> {
