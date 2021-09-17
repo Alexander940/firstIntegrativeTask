@@ -97,4 +97,59 @@ public class IngredientsInventory implements Serializable {
         return condition;
 
     }
+
+
+    /**
+     * This method will decrease an ingredient by an amount registered by the user
+     * @param ingredientName the name of the ingredient
+     * @param amount the amount that will be decreased
+     * @return
+     */
+    public boolean decreaseIngredient(String ingredientName, double amount ){
+        boolean condition= false;
+
+        for(int i=0;i<ingredients.size();i++){
+
+            if(ingredients.get(i).getName().equals(ingredientName)){
+
+                if(ingredients.get(i).getQuantity()-amount<0){
+                    break;
+                }else if(ingredients.get(i).getQuantity()-amount ==0){
+                    ingredients.remove(ingredients.get(i));
+                    condition=true;
+                    break;
+                }else {
+                    ingredients.get(i).setQuantity((ingredients.get(i).getQuantity())-amount);
+                    condition=true;
+                    break;
+                }
+
+            }
+
+
+
+        }
+
+        return condition;
+    }
+
+    /**
+     * This method will delete an ingredient
+     * @param ingredientName the name of the ingredient that will be deleted
+     * @return
+     */
+    public boolean deleteIngredient(String ingredientName){
+        boolean condition= false;
+        for(int i=0;i<ingredients.size();i++){
+            if(ingredients.get(i).getName().equals(ingredientName)){
+                ingredients.remove(ingredients.get(i));
+                condition =true;
+                break;
+            }
+        }
+
+        return condition;
+    }
 }
+
+

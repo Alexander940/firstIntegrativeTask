@@ -3,6 +3,7 @@ package ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -35,7 +36,26 @@ public class DecreaseIngredient extends Stage {
 
             String name = ingredientName.getText();
             double amount = Double.parseDouble(amountSubs.getText());
+            if(Main.restaurant.getIngredientsInventory().decreaseIngredient(name,amount)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText("Subtraction successful");
+                alert.setContentText("The ingredient was successfully subtracted");
 
+                alert.showAndWait();
+
+                Main.restaurant.getIngredientsInventory().saveIngredients();
+
+            }else {
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning ");
+                alert.setHeaderText("Addition was not successful");
+                alert.setContentText("Please verify the information that you entered");
+
+                alert.showAndWait();
+
+            }
 
 
 
