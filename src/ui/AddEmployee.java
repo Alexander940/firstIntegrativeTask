@@ -3,12 +3,10 @@ package ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Employee;
+import model.Restaurant;
 
 /**
  *  this class is a controller of window to add an employee
@@ -50,41 +48,35 @@ public class AddEmployee extends Stage {
      */
     private void init() {
         createBtn.setOnAction(e -> {
-            if(verificationPassword(passwordPF.getText(), confirmPasswordPF.getText())) {
+            if(Restaurant.getInstance().getEmployeesInventory().equalsPassword(passwordPF.getText(), confirmPasswordPF.getText())) {
                 String name = nameTF.getText();
                 String id = idTF.getText();
                 String birth = dateDP.getValue().toString();
                 String password = passwordPF.getText();
 
                 Employee employee = new Employee(name,id,birth,password);
-                boolean successful = Main.restaurant.getEmployeesInventory().addEmployee(employee);
+                boolean successful = Restaurant.getInstance().getEmployeesInventory().addEmployee(employee);
 
                 //if the employee could be added this shows an alert saying that the employee was successfully add
                 //if the employee couldn't be added this shows an alert saying that the employee wasn't successfully add
                 if(successful){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("The user was add successfully");
+                    alert.setContentText("Ooops, there was an error!");
 
+                    alert.showAndWait();
                 } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Look, an Error Dialog");
+                    alert.setContentText("Ooops, there was an error!");
 
+                    alert.showAndWait();
                 }
             } else {
 
             }
         });
-    }
-
-    /**
-     * this method verifies that the password and confirm password are equals
-     * @param password it contains the text of password field password
-     * @param confirmPassword it contains the text of password field confirmPassword
-     * @return this return true if the passwords are equals or false if the passwords are different
-     */
-    private boolean verificationPassword(String password, String confirmPassword){
-        boolean confirmation = false;
-
-        if(password.equals(confirmPassword)){
-            confirmation = true;
-        }
-
-        return confirmation;
     }
 }

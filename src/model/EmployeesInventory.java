@@ -83,4 +83,40 @@ public class EmployeesInventory implements Serializable {
         }
 
     }
+
+    /**
+     * This method compare the password and confirm password
+     * @param password This is the input of password
+     * @param confirmPassword This is the input of confirm password
+     * @return This is true if the passwords are equals or false in the another case
+     */
+    public boolean equalsPassword(String password, String confirmPassword){
+        boolean equals = false;
+
+        if(password.equals(confirmPassword)){
+            equals = true;
+        }
+
+        return equals;
+    }
+
+    /**
+     * This method verify the user to login
+     * @param id it contains the employee's id
+     * @param inputPassword it contains the employee's password
+     * @return it returns true if the user exists and the password and input are equals
+     */
+    public boolean verificationPassword(String id ,String inputPassword){
+        boolean verification = false;
+
+        for(Employee employee: employees){
+            if(employee.getId().equals(id)){
+                if(employee.getPassword().equals(inputPassword)){
+                    verification = true;
+                }
+            }
+        }
+
+        return verification;
+    }
 }

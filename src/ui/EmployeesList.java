@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import model.Employee;
 
 import javafx.scene.control.TableColumn;
+import model.Restaurant;
 
 /**
  * This class controls the window that it shows the employee's list
@@ -37,7 +38,7 @@ public class EmployeesList extends Stage {
             passwordColum.setCellValueFactory(new PropertyValueFactory<>("password"));
 
             table.getColumns().addAll(usernameColum, idColum, dateOfBirthColum, passwordColum);
-            table.setItems(Main.restaurant.getEmployeesInventory().getEmployees());
+            table.setItems(Restaurant.getInstance().getEmployeesInventory().getEmployees());
 
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);

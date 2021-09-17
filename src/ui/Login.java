@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -19,6 +20,7 @@ public class Login extends Stage {
     private TextField idTF;
     private PasswordField passwordPF;
     private Button joinBtn;
+    private ImageView imageView;
 
     private AdministratorWindow administratorWindow;
 
@@ -30,6 +32,8 @@ public class Login extends Stage {
             idTF = (TextField) loader.getNamespace().get("idTF");
             passwordPF = (PasswordField) loader.getNamespace().get("passwordPF");
             joinBtn = (Button) loader.getNamespace().get("joinBtn");
+            imageView = (ImageView) loader.getNamespace().get("image");
+
 
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);

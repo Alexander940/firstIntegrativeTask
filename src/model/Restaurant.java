@@ -1,16 +1,29 @@
 package model;
 
 /**
- * This class manage all logic of restaurant
+ * This class manage all logic of the restaurant
  * @author Alexander Echeverry
  * @version 1.0
  */
 public class Restaurant {
 
-    private EmployeesInventory employeesInventory;
+    //Singleton
 
-    public Restaurant() {
+    public static Restaurant instance;
+
+    public static Restaurant getInstance(){
+        if(instance == null){
+            instance = new Restaurant();
+        }
+        return instance;
+    }
+
+    private EmployeesInventory employeesInventory;
+    private IngredientsInventory ingredientsInventory;
+
+    private Restaurant() {
         this.employeesInventory = new EmployeesInventory();
+        this.ingredientsInventory = new IngredientsInventory();
     }
 
     /**
@@ -19,5 +32,13 @@ public class Restaurant {
      */
     public EmployeesInventory getEmployeesInventory() {
         return employeesInventory;
+    }
+
+    /**
+     * this method will return an employee's inventory
+     * @return this contains the ingredient's inventory
+     */
+    public IngredientsInventory getIngredientsInventory(){
+        return ingredientsInventory;
     }
 }
