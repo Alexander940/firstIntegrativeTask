@@ -4,28 +4,32 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="164.0" layoutY="40.0" text="Create Employee Account">
+      <Label layoutX="124.0" layoutY="26.0" text="Create Employee Account">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="163.0" layoutY="122.0" text="Name:" />
-      <Label layoutX="173.0" layoutY="179.0" text="ID:" />
-      <Label layoutX="153.0" layoutY="228.0" text="Date of birth" />
-      <Label layoutX="156.0" layoutY="273.0" text="Password" />
-      <Label layoutX="140.0" layoutY="315.0" text="Confirm password" />
-      <TextField fx:id="nameTF" layoutX="260.0" layoutY="118.0" />
-      <TextField fx:id="idTF" layoutX="260.0" layoutY="175.0" />
-      <DatePicker fx:id="dateDP" layoutX="260.0" layoutY="224.0" />
-      <PasswordField fx:id="passwordPF" layoutX="260.0" layoutY="269.0" />
-      <PasswordField fx:id="confirmPasswordPF" layoutX="260.0" layoutY="311.0" />
-      <Button fx:id="createBtn" layoutX="260.0" layoutY="350.0" mnemonicParsing="false" text="Create" />
+      <Label layoutX="119.0" layoutY="98.0" text="Name:" />
+      <Label layoutX="133.0" layoutY="146.0" text="ID:" />
+      <Label layoutX="107.0" layoutY="192.0" text="Date of birth" />
+      <Label layoutX="117.0" layoutY="295.0" text="Password" />
+      <Label layoutX="94.0" layoutY="343.0" text="Confirm password" />
+      <TextField fx:id="nameTF" layoutX="211.0" layoutY="94.0" />
+      <TextField fx:id="idTF" layoutX="211.0" layoutY="142.0" />
+      <DatePicker fx:id="dateDP" layoutX="211.0" layoutY="188.0" />
+      <PasswordField fx:id="passwordPF" layoutX="211.0" layoutY="291.0" />
+      <PasswordField fx:id="confirmPasswordPF" layoutX="211.0" layoutY="339.0" />
+      <Button fx:id="createBtn" layoutX="225.0" layoutY="383.0" mnemonicParsing="false" text="Create" />
+      <Label layoutX="108.0" layoutY="240.0" text="Is an admin?" />
+      <RadioButton fx:id="yesRB" layoutX="225.0" layoutY="240.0" mnemonicParsing="false" text="Yes" />
+      <RadioButton fx:id="noRB" layoutX="306.0" layoutY="240.0" mnemonicParsing="false" text="No" />
+      <Button fx:id="getOutBtn" layoutX="26.0" layoutY="31.0" mnemonicParsing="false" text="&lt;-" />
    </children>
 </AnchorPane>

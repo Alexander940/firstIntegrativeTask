@@ -90,7 +90,7 @@ public class EmployeesInventory implements Serializable {
      * @param confirmPassword This is the input of confirm password
      * @return This is true if the passwords are equals or false in the another case
      */
-    public boolean equalsPassword(String password, String confirmPassword){
+    public boolean comparePassword(String password, String confirmPassword){
         boolean equals = false;
 
         if(password.equals(confirmPassword)){
@@ -118,5 +118,25 @@ public class EmployeesInventory implements Serializable {
         }
 
         return verification;
+    }
+
+    private int findEmployeeById(String id){
+        int position = 0;
+        boolean cent = false;
+
+        for(int i = 0; i < employees.size() && !cent; i++){
+            if(employees.get(i).getId().equals(id)){
+                position = i;
+                cent = true;
+            }
+        }
+
+        return position;
+    }
+
+    public void changePassword(String id, String password){
+
+        employees.get(findEmployeeById(id)).setPassword(password);
+
     }
 }

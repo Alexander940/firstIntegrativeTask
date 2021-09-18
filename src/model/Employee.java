@@ -15,12 +15,14 @@ public class Employee implements Serializable {
     private String id;
     private String dateOfBirth;
     private String password;
+    private boolean administrator;
 
-    public Employee(String name, String id, String dateOfBirth, String password) {
+    public Employee(String name, String id, String dateOfBirth, String password, boolean administrator) {
         this.name = name;
         this.id = id;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
+        this.administrator = administrator;
     }
 
     public String getName() {

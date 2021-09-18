@@ -54,6 +54,7 @@ public class AdministratorWindow extends Stage {
         addEmployeeItem.setOnAction(e -> {
             addEmployee = new AddEmployee();
             addEmployee.show();
+            this.close();
         });
 
         showListEmployeesItem.setOnAction(e -> {

@@ -52,6 +52,7 @@ public class Login extends Stage {
         joinBtn.setOnAction(event->{
             administratorWindow = new AdministratorWindow();
             administratorWindow.show();
+            this.close();
         });
 
     }

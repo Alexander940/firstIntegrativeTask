@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Restaurant;
 
 public class DeleteIngredient extends Stage {
     Button deleteBtn;
@@ -34,7 +35,7 @@ public class DeleteIngredient extends Stage {
 
         deleteBtn.setOnAction(event -> {
         String ingName = ingredientName.getText();
-        if(Main.restaurant.getIngredientsInventory().deleteIngredient(ingName)){
+        if(Restaurant.getInstance().getIngredientsInventory().deleteIngredient(ingName)){
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -42,7 +43,7 @@ public class DeleteIngredient extends Stage {
             alert.setContentText("The ingredient was successfully deleted");
 
             alert.showAndWait();
-            Main.restaurant.getIngredientsInventory().saveIngredients();
+            Restaurant.getInstance().getIngredientsInventory().saveIngredients();
 
         }else{
 
