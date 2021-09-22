@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,9 @@ import java.util.ArrayList;
  * @author Alexander Echeverry
  * @version 1.0
  */
-public class Saucer {
+public class Saucer implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
     private double price;

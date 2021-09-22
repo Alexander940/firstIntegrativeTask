@@ -16,6 +16,8 @@
             <Menu mnemonicParsing="false" text="Menu module">
               <items>
                 <MenuItem fx:id="addSaucerItem" mnemonicParsing="false" text="Add saucer" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="showMenuMI" mnemonicParsing="false" text="Show menu" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Inventory module">
