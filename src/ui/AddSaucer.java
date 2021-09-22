@@ -26,6 +26,9 @@ public class AddSaucer extends Stage {
 
             table = (TableView) loader.getNamespace().get("table");
             addIngredientBtn = (Button) loader.getNamespace().get("addIngredientBtn");
+            addSaucerBtn = (Button) loader.getNamespace().get("addSaucerBtn");
+            nameTF = (TextField) loader.getNamespace().get("nameTF");
+            priceTF = (TextField) loader.getNamespace().get("priceTF");
 
             TableColumn<String, Ingredient> nameColum = new TableColumn<>("Name");
             TableColumn<String, Ingredient> cuantityColum = new TableColumn<>("Cuantity");

@@ -20,7 +20,7 @@ public class AdministratorWindow extends Stage {
     private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem;
     private ImageView imageView;
     // Menu items for the Inventory module
-    private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM;
+    private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM, showMenuMI;
     private EmployeesList employeesList;
     private AddEmployee addEmployee;
     private AddIngredient addIngredient;
@@ -41,6 +41,7 @@ public class AdministratorWindow extends Stage {
             showListEmployeesItem = (MenuItem) loader.getNamespace().get("showListEmployeesItem");
             changePasswordItem = (MenuItem) loader.getNamespace().get("changePasswordItem");
             addSaucerItem = (MenuItem) loader.getNamespace().get("addSaucerItem");
+            showMenuMI = (MenuItem) loader.getNamespace().get("showMenuMI");
             imageView = (ImageView) loader.getNamespace().get("imageView");
             // Fxml for the Inventory module
             addIngredientITEM = (MenuItem) loader.getNamespace().get("addIngredientITEM");
@@ -112,11 +113,15 @@ public class AdministratorWindow extends Stage {
         decreaseIngredient.show();
         });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f0bb83b5f87b68a2f0f7d42931c7440959012960
         addSaucerItem.setOnAction(event -> {
             addSaucer = new AddSaucer();
             addSaucer.show();
         });
+<<<<<<< HEAD
         //Action for the Order module
         viewOrders.setOnAction(event -> {
 
@@ -127,6 +132,12 @@ public class AdministratorWindow extends Stage {
         });
         changeOrder.setOnAction(event -> {
 
+=======
+
+        showMenuMI.setOnAction(event -> {
+            MenuList menuList = new MenuList();
+            menuList.show();
+>>>>>>> f0bb83b5f87b68a2f0f7d42931c7440959012960
         });
     }
 }
