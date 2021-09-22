@@ -90,5 +90,12 @@ public class AdministratorWindow extends Stage {
         decreaseIngredient = new DecreaseIngredient();
         decreaseIngredient.show();
         });
+
+
+
+
+
     }
 }
+
+
