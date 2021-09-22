@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Restaurant;
 
 import java.io.IOException;
 /**
@@ -53,14 +54,14 @@ public class IncreaseIngredient extends Stage {
 
                 alert.showAndWait();
             }
-            if(!centinel && Main.restaurant.getIngredientsInventory().increaseIngredient(ingName,amount)){
+            if(!centinel && Restaurant.getInstance().getIngredientsInventory().increaseIngredient(ingName,amount)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Addition successful");
                 alert.setContentText("The ingredient was successfully added");
 
                 alert.showAndWait();
-                Main.restaurant.getIngredientsInventory().saveIngredients();
+                Restaurant.getInstance().getIngredientsInventory().saveIngredients();
             }else if(!centinel){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning ");

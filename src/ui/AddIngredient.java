@@ -9,6 +9,7 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Ingredient;
+import model.Restaurant;
 
 
 /**
@@ -59,7 +60,7 @@ public class AddIngredient extends Stage {
             Double quantity = Double.parseDouble(ingredientQuantity.getText());
             Ingredient ingredient = new Ingredient(name,units,quantity);
             System.out.println(ingredient);
-            Main.restaurant.getIngredientsInventory().addIngredient(ingredient);
+            Restaurant.getInstance().getIngredientsInventory().addIngredient(ingredient);
 
         });
 

@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Restaurant;
 
 public class DecreaseIngredient extends Stage {
     TextField ingredientName,amountSubs;
@@ -36,7 +37,7 @@ public class DecreaseIngredient extends Stage {
 
             String name = ingredientName.getText();
             double amount = Double.parseDouble(amountSubs.getText());
-            if(Main.restaurant.getIngredientsInventory().decreaseIngredient(name,amount)){
+            if(Restaurant.getInstance().getIngredientsInventory().decreaseIngredient(name,amount)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Subtraction successful");
@@ -44,7 +45,7 @@ public class DecreaseIngredient extends Stage {
 
                 alert.showAndWait();
 
-                Main.restaurant.getIngredientsInventory().saveIngredients();
+                Restaurant.getInstance().getIngredientsInventory().saveIngredients();
 
             }else {
 

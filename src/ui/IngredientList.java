@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Ingredient;
-
+import model.Restaurant;
 
 
 public class IngredientList extends Stage {
@@ -30,7 +30,7 @@ public class IngredientList extends Stage {
             quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             tableView.getColumns().addAll(nameColumn,measurementColumn,quantityColumn);
-            tableView.setItems(Main.restaurant.getIngredientsInventory().getIngredients());
+            tableView.setItems(Restaurant.getInstance().getIngredientsInventory().getIngredients());
 
 
             Scene scene = new Scene(root,600,400);

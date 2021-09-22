@@ -21,6 +21,11 @@ public class Ingredient implements Serializable {
         this.quantity = quantity;
     }
 
+    public Ingredient(String name, double quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,5 +57,9 @@ public class Ingredient implements Serializable {
                 ", unitOfMeasurement='" + unitOfMeasurement + '\'' +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public void increaseQuantity(double amount){
+        this.quantity = this.quantity + amount;
     }
 }

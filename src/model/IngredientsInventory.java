@@ -44,7 +44,7 @@ public class IngredientsInventory implements Serializable {
      */
     public void saveIngredients(){
         try{
-            File ingredientFile = new File("ingredients.txt");
+            File ingredientFile = new File("src/data/ingredients.txt");
             FileOutputStream fos = new FileOutputStream(ingredientFile);
             ObjectOutputStream output = new ObjectOutputStream(fos);
             output.writeObject(new ArrayList<Ingredient>(this.ingredients));
@@ -60,7 +60,7 @@ public class IngredientsInventory implements Serializable {
      */
     public ObservableList<Ingredient> loadIngredients(){
         try {
-            File ingredientFile = new File("ingredients.txt");
+            File ingredientFile = new File("src/data/ingredients.txt");
             FileInputStream fis = new FileInputStream(ingredientFile);
             ObjectInputStream ois = new ObjectInputStream(fis);
             List<Ingredient> ing = (List<Ingredient>) ois.readObject();
@@ -79,23 +79,15 @@ public class IngredientsInventory implements Serializable {
      * @return
      */
     public boolean increaseIngredient(String ingredientName,double amount){
-        boolean condition = false;
-
         for(int i=0;i<ingredients.size();i++){
-
             if(ingredients.get(i).getName().equals(ingredientName)){
-                double amount1 = ingredients.get(i).getQuantity();
-                amount += amount1;
-                ingredients.get(i).setQuantity(amount);
+                ingredients.get(i).increaseQuantity(amount);
 
-                condition = true;
-                break;
+                return true;
             }
-
         }
 
-        return condition;
-
+        return false;
     }
 
 
@@ -125,9 +117,6 @@ public class IngredientsInventory implements Serializable {
                 }
 
             }
-
-
-
         }
 
         return condition;

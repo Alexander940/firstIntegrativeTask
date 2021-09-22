@@ -13,10 +13,10 @@ public class Saucer {
     private double price;
     private ArrayList<Ingredient> ingredients;
 
-    public Saucer(String name, double price) {
+    public Saucer(String name, double price, ArrayList<Ingredient> ingredients) {
         this.name = name;
         this.price = price;
-        ingredients = new ArrayList<>();
+        this.ingredients = ingredients;
     }
 
     public String getName() {

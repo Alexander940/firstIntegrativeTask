@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -15,15 +15,19 @@
         <menus>
             <Menu mnemonicParsing="false" text="Menu module">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="addSaucerItem" mnemonicParsing="false" text="Add saucer" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Inventory module">
               <items>
                 <MenuItem fx:id="showIngredientITEM" mnemonicParsing="false" text="Show Ingredients" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="addIngredientITEM" mnemonicParsing="false" text="Add Ingredient" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="increaseIngredientITEM" mnemonicParsing="false" text="Increase Ingredient" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="decreaseIngredientITEM" mnemonicParsing="false" text="Decrease Ingredient" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="deleteIngredientITEM" mnemonicParsing="false" text="Delete Ingredient" />
               </items>
             </Menu>
@@ -35,7 +39,9 @@
           <Menu mnemonicParsing="false" text="Personal module">
                <items>
                   <MenuItem fx:id="addEmployeeItem" mnemonicParsing="false" text="Add employee" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="showListEmployeesItem" mnemonicParsing="false" text="Show list" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="changePasswordItem" mnemonicParsing="false" text="Change password" />
                </items>
           </Menu>
@@ -46,11 +52,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="59.0" fitWidth="309.0" layoutX="163.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../loginImage.jpg" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="imageView" fitHeight="59.0" fitWidth="309.0" layoutX="163.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="207.0" layoutY="200.0" text="Hi administrator!!">
          <font>
             <Font size="24.0" />
