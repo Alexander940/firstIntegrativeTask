@@ -20,10 +20,12 @@ public class Restaurant {
 
     private EmployeesInventory employeesInventory;
     private IngredientsInventory ingredientsInventory;
+    private Menu menu;
 
     private Restaurant() {
         this.employeesInventory = new EmployeesInventory();
         this.ingredientsInventory = new IngredientsInventory();
+        this.menu = new Menu();
     }
 
     /**
@@ -40,5 +42,9 @@ public class Restaurant {
      */
     public IngredientsInventory getIngredientsInventory(){
         return ingredientsInventory;
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 }

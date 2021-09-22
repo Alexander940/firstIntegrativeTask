@@ -4,7 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
 
 /**
  * This class controls the window that it allows manage the program's module
@@ -13,7 +17,8 @@ import javafx.stage.Stage;
  */
 public class AdministratorWindow extends Stage {
     // Menu items for the Personal module
-    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem;
+    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem;
+    private ImageView imageView;
     // Menu items for the Inventory module
     private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM;
     private EmployeesList employeesList;
@@ -23,6 +28,7 @@ public class AdministratorWindow extends Stage {
     private IncreaseIngredient increaseIngredient;
     private DecreaseIngredient decreaseIngredient;
     private DeleteIngredient deleteIngredient;
+    private AddSaucer addSaucer;
 
     public AdministratorWindow() {
         try {
@@ -32,6 +38,8 @@ public class AdministratorWindow extends Stage {
             addEmployeeItem = (MenuItem) loader.getNamespace().get("addEmployeeItem");
             showListEmployeesItem = (MenuItem) loader.getNamespace().get("showListEmployeesItem");
             changePasswordItem = (MenuItem) loader.getNamespace().get("changePasswordItem");
+            addSaucerItem = (MenuItem) loader.getNamespace().get("addSaucerItem");
+            imageView = (ImageView) loader.getNamespace().get("imageView");
             // Fxml for the Inventory module
             addIngredientITEM = (MenuItem) loader.getNamespace().get("addIngredientITEM");
             increaseIngredientITEM = (MenuItem) loader.getNamespace().get("increaseIngredientITEM");
@@ -40,6 +48,10 @@ public class AdministratorWindow extends Stage {
             showIngredientITEM = (MenuItem) loader.getNamespace().get("showIngredientITEM");
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
+
+            FileInputStream input = new FileInputStream("src/img/loginImage.jpg");
+            Image image = new Image(input);
+            imageView.setImage(image);
 
             init();
         } catch (Exception ex){
@@ -63,7 +75,9 @@ public class AdministratorWindow extends Stage {
         });
 
         changePasswordItem.setOnAction(e -> {
-
+            ChangePassword changePassword = new ChangePassword();
+            changePassword.show();
+            this.close();
         });
         // Action for the Inventory module
         addIngredientITEM.setOnAction(event -> {
@@ -90,6 +104,11 @@ public class AdministratorWindow extends Stage {
         decreaseIngredientITEM.setOnAction(event -> {
         decreaseIngredient = new DecreaseIngredient();
         decreaseIngredient.show();
+        });
+
+        addSaucerItem.setOnAction(event -> {
+            addSaucer = new AddSaucer();
+            addSaucer.show();
         });
     }
 }

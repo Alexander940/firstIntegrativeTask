@@ -49,7 +49,7 @@ public class EmployeesInventory implements Serializable {
      */
     private ObservableList<Employee> loadEmployees(){
         try {
-            File file = new File("employees.txt");
+            File file = new File("src/data/employees.txt");
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream input = new ObjectInputStream(fis);
             List<Employee> list = (List<Employee>) input.readObject();
@@ -69,7 +69,7 @@ public class EmployeesInventory implements Serializable {
      */
     private boolean saveEmployees(){
         try{
-            File file = new File("employees.txt");
+            File file = new File("src/data/employees.txt");
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream output = new ObjectOutputStream(fos);
             output.writeObject(new ArrayList<Employee>(this.employees));
@@ -87,13 +87,14 @@ public class EmployeesInventory implements Serializable {
     /**
      * This method compare the password and confirm password
      * @param password This is the input of password
-     * @param confirmPassword This is the input of confirm password
+     * @param employeeId This is the employee's id for compare password
      * @return This is true if the passwords are equals or false in the another case
      */
-    public boolean comparePassword(String password, String confirmPassword){
+    public boolean comparePassword(String password, String employeeId){
         boolean equals = false;
+        int passwordEmployeePosition = findEmployeeById(employeeId);
 
-        if(password.equals(confirmPassword)){
+        if(password.equals(employees.get(passwordEmployeePosition).getPassword())){
             equals = true;
         }
 
@@ -106,7 +107,7 @@ public class EmployeesInventory implements Serializable {
      * @param inputPassword it contains the employee's password
      * @return it returns true if the user exists and the password and input are equals
      */
-    public boolean verificationPassword(String id ,String inputPassword){
+    public boolean verificationLogin(String id ,String inputPassword){
         boolean verification = false;
 
         for(Employee employee: employees){
@@ -120,8 +121,13 @@ public class EmployeesInventory implements Serializable {
         return verification;
     }
 
+    /**
+     * This method find an employee by his id
+     * @param id this is employee's id
+     * @return This is the position of the employee in the observable list (employees)
+     */
     private int findEmployeeById(String id){
-        int position = 0;
+        int position = -1;
         boolean cent = false;
 
         for(int i = 0; i < employees.size() && !cent; i++){
@@ -134,9 +140,25 @@ public class EmployeesInventory implements Serializable {
         return position;
     }
 
+    /**
+     * This method changes the password of an employee
+     * @param id This is the employee's id to change password
+     * @param password This is the new employee's password
+     */
     public void changePassword(String id, String password){
 
         employees.get(findEmployeeById(id)).setPassword(password);
+        saveEmployees();
+    }
 
+    public boolean employeeExist(String id){
+        boolean res = false;
+        int position = findEmployeeById(id);
+
+        if(position != -1){
+            res = true;
+        }
+
+        return res;
     }
 }

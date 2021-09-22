@@ -6,8 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 /**
  * This class controls the initial window
@@ -32,8 +36,12 @@ public class Login extends Stage {
             idTF = (TextField) loader.getNamespace().get("idTF");
             passwordPF = (PasswordField) loader.getNamespace().get("passwordPF");
             joinBtn = (Button) loader.getNamespace().get("joinBtn");
-            imageView = (ImageView) loader.getNamespace().get("image");
+            imageView = (ImageView) loader.getNamespace().get("imageView");
 
+            File file = new File("src/img/loginImage.jpg");
+            FileInputStream input = new FileInputStream(file);
+            Image image = new Image(input);
+            imageView.setImage(image);
 
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);

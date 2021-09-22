@@ -4,9 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Employee;
 import model.Restaurant;
+
+import java.io.FileInputStream;
+import java.net.URL;
 
 /**
  *  this class is a controller of window to add an employee
@@ -51,40 +56,45 @@ public class AddEmployee extends Stage {
      * this method execute the actions of fxml components
      */
     private void init() {
+        setImageBtn();
         createBtn.setOnAction(e -> {
-            if(verificationFields()) {
-                if (Restaurant.getInstance().getEmployeesInventory().comparePassword(passwordPF.getText(), confirmPasswordPF.getText())) {
-                    String name = nameTF.getText();
-                    String id = idTF.getText();
-                    String birth = dateDP.getValue().toString();
-                    String password = passwordPF.getText();
-                    boolean administrator = getValueAdministrator();
-                    System.out.println(administrator);
+            if(!Restaurant.getInstance().getEmployeesInventory().employeeExist(idTF.getText())) {
+                if (verificationFields()) {
+                    if (passwordPF.getText().equals(confirmPasswordPF.getText())) {
+                        String name = nameTF.getText();
+                        String id = idTF.getText();
+                        String birth = dateDP.getValue().toString();
+                        String password = passwordPF.getText();
+                        boolean administrator = getValueAdministrator();
+                        System.out.println(administrator);
 
-                    Employee employee = new Employee(name, id, birth, password, administrator);
-                    boolean successful = Restaurant.getInstance().getEmployeesInventory().addEmployee(employee);
+                        Employee employee = new Employee(name, id, birth, password, administrator);
+                        boolean successful = Restaurant.getInstance().getEmployeesInventory().addEmployee(employee);
 
-                    //if the employee could be added this shows an alert saying that the employee was successfully add
-                    //if the employee couldn't be added this shows an alert saying that the employee wasn't successfully add
-                    if (successful) {
-                        confirmationAlert("",
-                                "The employee was successfully add",
-                                ":)");
-                        cleanTextFields();
+                        //if the employee could be added this shows an alert saying that the employee was successfully add
+                        //if the employee couldn't be added this shows an alert saying that the employee wasn't successfully add
+                        if (successful) {
+                            confirmationAlert("",
+                                    "The employee was successfully add",
+                                    ":)");
+                            cleanTextFields();
+                        } else {
+                            errorAlert("Error dialog",
+                                    "The employee couldn't be add",
+                                    "Ooops, there was an error");
+                        }
                     } else {
                         errorAlert("Error dialog",
-                                "The employee couldn't be add",
+                                "The passwords aren't equals",
                                 "Ooops, there was an error");
                     }
                 } else {
-                    errorAlert("Error dialog",
-                            "The passwords aren't equals",
-                            "Ooops, there was an error");
+                    errorAlert("Error",
+                            "You must fill all the fields",
+                            "Ooops");
                 }
             } else {
-                errorAlert("Error",
-                        "You must fill all the fields",
-                        "Ooops");
+                errorAlert("Error", "This employee already exist", "Ooops");
             }
         });
 
@@ -172,5 +182,16 @@ public class AddEmployee extends Stage {
         }
 
         return all;
+    }
+
+    private void setImageBtn(){
+        try {
+            FileInputStream input = new FileInputStream("src/img/flechaAtras.jpg");
+            Image imageFlecha = new Image(input, 36,24, true, true);
+
+            getOutBtn.setGraphic(new ImageView(imageFlecha));
+        } catch (Exception e){
+
+        }
     }
 }
