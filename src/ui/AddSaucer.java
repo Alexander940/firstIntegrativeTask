@@ -21,6 +21,7 @@ public class AddSaucer extends Stage {
 
     public AddSaucer() {
         try {
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddSaucer.fxml"));
             Parent root = loader.load();
 

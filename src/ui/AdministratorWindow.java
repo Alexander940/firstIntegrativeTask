@@ -113,17 +113,16 @@ public class AdministratorWindow extends Stage {
         decreaseIngredient.show();
         });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f0bb83b5f87b68a2f0f7d42931c7440959012960
         addSaucerItem.setOnAction(event -> {
             addSaucer = new AddSaucer();
             addSaucer.show();
         });
-<<<<<<< HEAD
         //Action for the Order module
+
         viewOrders.setOnAction(event -> {
+
+
 
         });
         registerOrder.setOnAction(event -> {
@@ -132,12 +131,11 @@ public class AdministratorWindow extends Stage {
         });
         changeOrder.setOnAction(event -> {
 
-=======
-
+        });
         showMenuMI.setOnAction(event -> {
             MenuList menuList = new MenuList();
             menuList.show();
->>>>>>> f0bb83b5f87b68a2f0f7d42931c7440959012960
+
         });
     }
 }
