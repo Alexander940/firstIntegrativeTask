@@ -44,7 +44,7 @@ public class AddSaucer extends Stage {
 
             init();
         } catch (Exception ex){
-
+            ex.printStackTrace();
         }
     }
 

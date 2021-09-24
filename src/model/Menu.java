@@ -48,7 +48,11 @@ public class Menu implements Serializable{
     public void addSaucer(String name, String sPrice){
         System.out.println("entro a addSacuer");
         double price = Double.parseDouble(sPrice);
-        Saucer saucer = new Saucer(name, price, ingredients);
+        ArrayList<Ingredient> ingredientsSave = (ArrayList<Ingredient>) ingredients.clone();
+        Saucer saucer = new Saucer(name, price, ingredientsSave);
+        for(Ingredient ingredient: ingredients){
+            System.out.println(ingredient.getName());
+        }
         saucers.add(saucer);
         ingredients.clear();
         saveSaucers();
@@ -105,6 +109,10 @@ public class Menu implements Serializable{
 
             return null;
         }
+    }
+
+    public void printIngredients(){
+        System.out.println(saucers.get(0).getIngredients().isEmpty());
     }
 
     private boolean saveSaucers(){

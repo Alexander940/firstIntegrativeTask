@@ -20,7 +20,9 @@ public class Saucer implements Serializable {
     public Saucer(String name, double price, ArrayList<Ingredient> ingredients) {
         this.name = name;
         this.price = price;
-        this.ingredients = ingredients;
+
+        this.ingredients = new ArrayList<Ingredient>();
+
     }
 
     public String getName() {

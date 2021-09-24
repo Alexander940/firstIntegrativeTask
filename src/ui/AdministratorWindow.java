@@ -7,6 +7,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.Restaurant;
 
 import java.io.FileInputStream;
 
@@ -71,6 +72,7 @@ public class AdministratorWindow extends Stage {
      */
     private void init(){
         addEmployeeItem.setOnAction(e -> {
+            Restaurant.getInstance().getMenu().printIngredients();
             addEmployee = new AddEmployee();
             addEmployee.show();
             this.close();
