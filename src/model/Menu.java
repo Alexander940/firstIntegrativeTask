@@ -7,7 +7,12 @@ import javafx.scene.control.MenuItem;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
+
+/**
+ * This method contains the logic of a menu
+ * @author Alexander Echeverry
+ * @version 1.0
+ */
 
 public class Menu implements Serializable{
 
@@ -159,6 +164,34 @@ public class Menu implements Serializable{
 
     public ObservableList<Ingredient> getIngredients() {
         return ingredients;
+    }
+
+    /**
+     * This method finds a saucer by his name
+     * @param name This is the name of saucer for searching
+     * @return The position the saucer found in the observable list saucer. If the saucer isn't found return -1
+     */
+    private int findSaucerByName(String name){
+        for(int i = 0; i < saucers.size(); i++){
+            if(saucers.get(i).getName().equals(name)){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * This method verify if a saucer exists
+     * @param name This is saucer's name for searching
+     * @return True if there is a saucer with this name in the observable list saucers or false in the other case
+     */
+    public boolean saucerExist(String name){
+        if(findSaucerByName(name) != -1){
+            return true;
+        }
+
+        return false;
     }
 
 }
