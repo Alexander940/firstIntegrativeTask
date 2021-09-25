@@ -20,8 +20,7 @@ public class Saucer implements Serializable {
     public Saucer(String name, double price, ArrayList<Ingredient> ingredients) {
         this.name = name;
         this.price = price;
-
-        this.ingredients = new ArrayList<Ingredient>();
+        this.ingredients = cloneIngredients(ingredients);
 
     }
 
@@ -47,6 +46,20 @@ public class Saucer implements Serializable {
 
     public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    private ArrayList<Ingredient> cloneIngredients(ArrayList<Ingredient> ingredientsToClone){
+        ArrayList<Ingredient> ingredientsSave = new ArrayList<>();
+
+        for(int i = 0; i < ingredientsToClone.size(); i++){
+            String name = ingredientsToClone.get(i).getName();
+            double quantity = ingredientsToClone.get(i).getQuantity();
+
+            Ingredient ingredient = new Ingredient(name, quantity);
+            ingredientsSave.add(ingredient);
+        }
+
+        return ingredientsSave;
     }
 
     @Override

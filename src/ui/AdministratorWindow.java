@@ -118,6 +118,7 @@ public class AdministratorWindow extends Stage {
         addSaucerItem.setOnAction(event -> {
             addSaucer = new AddSaucer();
             addSaucer.show();
+            this.close();
         });
 
         //Action for the Order module
