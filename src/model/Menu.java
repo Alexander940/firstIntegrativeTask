@@ -111,27 +111,26 @@ public class Menu implements Serializable{
         }
     }
 
-<<<<<<< HEAD
     /**
      * This method is to verify if there are enough ingredients to add the combo
      * @param saucerName The name of the saucer
      * @param saucerQuantity The quantity of combos that the user wanted
      * @return Returns a true or false depending on the verification // False no space // True there's space
      */
-    public boolean verIngredients(String saucerName,int saucerQuantity){
+    public boolean verIngredients(String saucerName,int saucerQuantity) {
         String name;
         double amount;
-        for(int i=0;i<saucers.size();i++){
+        for (int i = 0; i < saucers.size(); i++) {
 
-            if(saucers.get(i).getName().equals(saucerName)){
+            if (saucers.get(i).getName().equals(saucerName)) {
 
-                for(int b=0;b<saucers.get(i).getIngredients().size();b++){
-                   name = saucers.get(i).getIngredients().get(b).getName();
-                    amount = saucerQuantity*(saucers.get(i).getIngredients().get(b).getQuantity());
+                for (int b = 0; b < saucers.get(i).getIngredients().size(); b++) {
+                    name = saucers.get(i).getIngredients().get(b).getName();
+                    amount = saucerQuantity * (saucers.get(i).getIngredients().get(b).getQuantity());
 
-                    if(Restaurant.getInstance().getIngredientsInventory().verIngredient(name,amount)){
+                    if (Restaurant.getInstance().getIngredientsInventory().verIngredient(name, amount)) {
 
-                    }else if(saucers.get(i).getIngredients().size()==0){
+                    } else if (saucers.get(i).getIngredients().size() == 0) {
                         return false;
                     }
 
@@ -139,8 +138,9 @@ public class Menu implements Serializable{
             }
         }
 
-       return true;
-=======
+        return true;
+    }
+
     public ObservableList<MenuItem> getItems(){
         if(items.isEmpty()) {
             for (Ingredient ingredient : Restaurant.getInstance().getIngredientsInventory().getIngredients()) {
@@ -161,6 +161,5 @@ public class Menu implements Serializable{
 
     public ObservableList<Ingredient> getIngredients() {
         return ingredients;
->>>>>>> fa474adb0476e079744cc98cb6a44ff8ed2d91d6
     }
 }
