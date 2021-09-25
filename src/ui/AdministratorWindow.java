@@ -31,6 +31,7 @@ public class AdministratorWindow extends Stage {
     private AddSaucer addSaucer;
     private MenuItem viewOrders,registerOrder,changeOrder;
     private AddOrders addOrders;
+    private ChangeOrderStatus changeOrderStatus;
 
     public AdministratorWindow() {
         try {
@@ -49,7 +50,7 @@ public class AdministratorWindow extends Stage {
             decreaseIngredientITEM =  (MenuItem) loader.getNamespace().get("decreaseIngredientITEM");
             deleteIngredientITEM = (MenuItem) loader.getNamespace().get("deleteIngredientITEM");
             showIngredientITEM = (MenuItem) loader.getNamespace().get("showIngredientITEM");
-            // Fxml for the Personal module
+            // Fxml for the Orders module
             viewOrders = (MenuItem) loader.getNamespace().get("viewOrders");
             registerOrder= (MenuItem) loader.getNamespace().get("registerOrder");
             changeOrder = (MenuItem) loader.getNamespace().get("changeOrder");
@@ -113,18 +114,12 @@ public class AdministratorWindow extends Stage {
         decreaseIngredient.show();
         });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> fa87e78bbdb099a476352ecd221eb99e2829323d
         addSaucerItem.setOnAction(event -> {
             addSaucer = new AddSaucer();
             addSaucer.show();
         });
-<<<<<<< HEAD
-=======
 
->>>>>>> fa87e78bbdb099a476352ecd221eb99e2829323d
         //Action for the Order module
 
         viewOrders.setOnAction(event -> {
@@ -132,18 +127,16 @@ public class AdministratorWindow extends Stage {
 
 
         });
+        changeOrder.setOnAction(event -> {
+            changeOrderStatus = new ChangeOrderStatus();
+            changeOrderStatus.show();
+        });
         registerOrder.setOnAction(event -> {
         addOrders = new AddOrders();
         addOrders.show();
         });
 
-        changeOrder.setOnAction(event -> {
 
-        });
-<<<<<<< HEAD
-=======
-
->>>>>>> fa87e78bbdb099a476352ecd221eb99e2829323d
         showMenuMI.setOnAction(event -> {
             MenuList menuList = new MenuList();
             menuList.show();

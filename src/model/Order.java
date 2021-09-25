@@ -1,34 +1,35 @@
 package model;
 
-<<<<<<< HEAD
-    public class Order {
-=======
+
+
+
+import java.io.Serializable;
 import java.util.ArrayList;
->>>>>>> fa87e78bbdb099a476352ecd221eb99e2829323d
+
+
+public class Order implements Serializable {
 
     String uId;
-    String state;
+    OrderStatus state;
     String date;
-<<<<<<< HEAD
 
-
-
-=======
     ArrayList<ArrayList<String>> saucers;
 
->>>>>>> fa87e78bbdb099a476352ecd221eb99e2829323d
-    public Order(String uId,String state,String date){
+
+    public Order(String uId,OrderStatus state,String date){
         this.date = date;
         this.state = state;
         this.uId = uId;
-<<<<<<< HEAD
-
-=======
->>>>>>> fa87e78bbdb099a476352ecd221eb99e2829323d
+        saucers = new ArrayList<>();
     }
-
-    public void setState(String state) {
+    public void setState(OrderStatus state) {
         this.state = state;
     }
 
+    public String getuId() {
+        return uId;
+    }
 }
+
+
+

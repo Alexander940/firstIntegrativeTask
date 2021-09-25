@@ -1,5 +1,7 @@
 package model;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 /**
  * This class manage all logic of the restaurant
  * @author Alexander Echeverry
@@ -21,11 +23,14 @@ public class Restaurant {
     private EmployeesInventory employeesInventory;
     private IngredientsInventory ingredientsInventory;
     private Menu menu;
+    private OrderInventory orders;
 
     private Restaurant() {
         this.employeesInventory = new EmployeesInventory();
         this.ingredientsInventory = new IngredientsInventory();
         this.menu = new Menu();
+        this.orders = new OrderInventory();
+
     }
 
     /**
@@ -46,5 +51,8 @@ public class Restaurant {
 
     public Menu getMenu() {
         return menu;
+    }
+    public OrderInventory getOrder(){
+        return orders;
     }
 }

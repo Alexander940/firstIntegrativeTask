@@ -139,6 +139,32 @@ public class IngredientsInventory implements Serializable {
 
         return condition;
     }
+
+    /**
+     * This method will help to check if there are enough ingredients to create the combo
+     * @param ingredientName The name of the ingredient to search
+     * @param amount The amount of the ingredient
+     * @return
+     */
+    public boolean verIngredient(String ingredientName,double amount){
+
+        for(int i=0;i<ingredients.size();i++){
+            if(ingredients.get(i).getName().equals(ingredientName)){
+                if(ingredients.get(i).getQuantity()-amount<0){
+                    return false;
+
+                }else if(ingredients.get(i).getQuantity()-amount>0){
+
+
+                }else if(ingredients.get(i).getQuantity()-amount==0){
+
+                }
+           }
+        }
+
+        return true;
+
+    }
 }
 
 
