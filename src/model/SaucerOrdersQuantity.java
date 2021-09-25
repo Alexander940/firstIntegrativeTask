@@ -1,7 +1,9 @@
 package model;
 
-public class SaucerOrdersQuantity {
+import java.io.Serializable;
 
+public class SaucerOrdersQuantity implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String saucerName;
     private int quantity;
 

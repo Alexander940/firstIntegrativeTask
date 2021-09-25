@@ -113,9 +113,8 @@ public class AdministratorWindow extends Stage {
         //Action for the Order module
 
         viewOrders.setOnAction(event -> {
-
-
-
+            OrderList orderList = new OrderList();
+            orderList.show();
         });
 
         changeOrder.setOnAction(event -> {
