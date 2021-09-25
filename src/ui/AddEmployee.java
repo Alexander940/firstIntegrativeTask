@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.Employee;
 import model.Restaurant;
 
 import java.io.FileInputStream;
@@ -66,10 +65,8 @@ public class AddEmployee extends Stage {
                         String birth = dateDP.getValue().toString();
                         String password = passwordPF.getText();
                         boolean administrator = getValueAdministrator();
-                        System.out.println(administrator);
 
-                        Employee employee = new Employee(name, id, birth, password, administrator);
-                        boolean successful = Restaurant.getInstance().getEmployeesInventory().addEmployee(employee);
+                        boolean successful = Restaurant.getInstance().getEmployeesInventory().addEmployee(name, id , birth, password, administrator);
 
                         //if the employee could be added this shows an alert saying that the employee was successfully add
                         //if the employee couldn't be added this shows an alert saying that the employee wasn't successfully add

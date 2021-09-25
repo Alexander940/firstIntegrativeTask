@@ -28,7 +28,8 @@ public class EmployeesInventory implements Serializable {
      * @param employee contains the employee to add
      * @return if the employee was added return true, in another case this returns false
      */
-    public boolean addEmployee(Employee employee){
+    public boolean addEmployee(String name, String id, String birth, String password, boolean administrator){
+        Employee employee = new Employee(name, id, birth, password, administrator);
         this.employees.add(employee);
         boolean successAdd = saveEmployees();
 
