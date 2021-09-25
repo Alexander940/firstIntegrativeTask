@@ -6,21 +6,20 @@ import javafx.scene.control.MenuItem;
 
 import java.util.ArrayList;
 
-public class OrderInventory {
+public class OrdersInventory {
 
     private ObservableList<Order> orders;
     private ArrayList<Saucer> saucers;
     private ObservableList<MenuItem> menuItems;
     private ObservableList<MenuItem> menuOrderItems;
-   private ObservableList<String> nameSaucer;
-    private ObservableList<Integer> quantitySaucer;
+    private ObservableList<OrdersQuantity> ordersQuantity;
 
-    public OrderInventory(){
-         orders = FXCollections.observableArrayList();
+    public OrdersInventory(){
+        orders = FXCollections.observableArrayList();
         menuItems = FXCollections.observableArrayList();
         saucers = new ArrayList<>();
         menuOrderItems = FXCollections.observableArrayList();
-
+        ordersQuantity = FXCollections.observableArrayList();
     }
 
 
@@ -59,20 +58,23 @@ public class OrderInventory {
         return menuOrderItems;
     }
 
-/*
-    public void addOrder(String uID,double price,String date){
-        Order order = new Order(uID,OrderStatus.PENDING,date,price);
-        orders.add(order);
-    }
-    
- */
 
-    public ArrayList<Saucer> getSaucers() {
-        return saucers;
+    public void addOrder(String uID,double price,String date){
+        Order order = new Order(uID,OrderStatus.PENDING,date,price,new ArrayList<OrdersQuantity>(this.ordersQuantity));
+        orders.add(order);
     }
 
     public ObservableList<Order> getOrders() {
         return orders;
+    }
+
+    public void addSaucer(String name, int quantity){
+        OrdersQuantity orderQuantity = new OrdersQuantity(name, quantity);
+        ordersQuantity.add(orderQuantity);
+    }
+
+    public ObservableList<OrdersQuantity> getOrdersQuantity() {
+        return ordersQuantity;
     }
 }
 

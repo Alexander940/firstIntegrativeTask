@@ -16,16 +16,14 @@ public class Order implements Serializable {
     OrderStatus state;
     String date;
     double price;
-    ArrayList<String> nameSaucer;
-    ArrayList<Integer> quantitySaucer;
+    ArrayList<OrdersQuantity> ordersQuantity;
 
-    public Order(String uId, OrderStatus state, String date, double price, ArrayList<String> nameSaucer, ArrayList<Integer> quantitySaucer) {
+    public Order(String uId, OrderStatus state, String date, double price, ArrayList<OrdersQuantity> ordersQuantity) {
         this.uId = uId;
         this.state = state;
         this.date = date;
         this.price = price;
-        this.nameSaucer = nameSaucer;
-        this.quantitySaucer = quantitySaucer;
+        this.ordersQuantity = ordersQuantity;
     }
 
     public void setState(OrderStatus state) {

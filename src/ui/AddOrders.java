@@ -1,7 +1,6 @@
 package ui;
 
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,8 +22,7 @@ public class AddOrders extends Stage {
 
 
     Button addSaucerCombo,addOrder;
-    TableView nameSaucerTable;
-    TableView quantitySaucerTable;
+    TableView table;
     DatePicker datePicker;
 
     public AddOrders(){
@@ -32,11 +30,19 @@ public class AddOrders extends Stage {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddOrders.fxml"));
             Parent root = loader.load();
             addSaucerCombo = (Button) loader.getNamespace().get("addSaucerCombo");
-            nameSaucerTable = (TableView) loader.getNamespace().get("nameSaucerTable");
-            quantitySaucerTable = (TableView) loader.getNamespace().get("quantitySaucerTable");
+            table = (TableView) loader.getNamespace().get("table");
             addOrder = (Button) loader.getNamespace().get("addOrder");
             datePicker = (DatePicker) loader.getNamespace().get("datePicker");
+            //nameSaucerTable
+            TableColumn<OrdersQuantity,String> nameSaucerColumn = new TableColumn<>("Name");
+            TableColumn<OrdersQuantity,String> quantitySaucerColumn = new TableColumn<>("Quantity");
 
+            nameSaucerColumn.setCellValueFactory(new PropertyValueFactory("orderName"));
+            quantitySaucerColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
+
+            table.getColumns().addAll(nameSaucerColumn ,quantitySaucerColumn);
+
+            table.setItems(Restaurant.getInstance().getOrdersInventory().getOrdersQuantity());
 
             Scene scene = new Scene(root, 603, 526);
             setScene(scene);
@@ -44,7 +50,6 @@ public class AddOrders extends Stage {
         }catch (Exception ex){
             ex.printStackTrace();
         }
-
     }
 
     private void init() {
@@ -59,7 +64,7 @@ public class AddOrders extends Stage {
             LocalDate dates = datePicker.getValue();
             double price = 0;
 
-            Restaurant.getInstance().getOrder().addOrder(uId,price,dates.toString());
+            Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
         });
     }
 

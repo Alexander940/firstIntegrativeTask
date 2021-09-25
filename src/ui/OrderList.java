@@ -12,12 +12,12 @@ import model.OrderStatus;
 import model.Restaurant;
 
 
-public class ViewOrders extends Stage {
+public class OrderList extends Stage {
 
     TableView table;
-    public ViewOrders(){
+    public OrderList(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewOrders.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderList.fxml"));
             Parent root = loader.load();
             table = (TableView) loader.getNamespace().get("table");
 
@@ -33,7 +33,7 @@ public class ViewOrders extends Stage {
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
             table.getColumns().addAll(nameColumn,statusColumn,dateColumn,priceColumn);
-            table.setItems(Restaurant.getInstance().getOrder().getOrders());
+            table.setItems(Restaurant.getInstance().getOrdersInventory().getOrders());
             Scene scene = new Scene(root,600,400);
             setScene(scene);
         }catch (Exception ex){

@@ -8,11 +8,10 @@ import javafx.stage.Stage;
 import model.Restaurant;
 
 
-
 public class AddOrderSaucer extends Stage {
-    Button addOrderSaucer;
-    MenuButton menuBtnCombo;
-    TextField quantityTF;
+    private Button addOrderSaucer;
+    private MenuButton menuBtnCombo;
+    private TextField quantityTF;
 
     public AddOrderSaucer(){
         try {
@@ -20,7 +19,7 @@ public class AddOrderSaucer extends Stage {
             Parent root = loader.load();
             addOrderSaucer = (Button) loader.getNamespace().get("addOrderSaucer");
             menuBtnCombo = (MenuButton) loader.getNamespace().get("menuBtnCombo");
-            menuBtnCombo.getItems().addAll(Restaurant.getInstance().getOrder().getItems());
+            menuBtnCombo.getItems().addAll(Restaurant.getInstance().getOrdersInventory().getItems());
             quantityTF = (TextField) loader.getNamespace().get("quantityTF");
             Scene scene = new Scene(root,406,284);
             setScene(scene);
@@ -32,7 +31,7 @@ public class AddOrderSaucer extends Stage {
 
     private void init() {
 
-        for (MenuItem mItem : Restaurant.getInstance().getOrder().getItems()) {
+        for (MenuItem mItem : Restaurant.getInstance().getOrdersInventory().getItems()) {
             mItem.setOnAction(event -> {
                 menuBtnCombo.setText(mItem.getText());
             });
@@ -46,9 +45,7 @@ public class AddOrderSaucer extends Stage {
             String saucerName = menuBtnCombo.getText();
             if(Restaurant.getInstance().getMenu().verIngredients(saucerName,amount)){
 
-
-
-
+                Restaurant.getInstance().getOrdersInventory().addSaucer(saucerName, amount);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Addition completed");

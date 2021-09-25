@@ -7,7 +7,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.Restaurant;
 
 import java.io.FileInputStream;
 

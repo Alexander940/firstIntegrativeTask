@@ -111,6 +111,7 @@ public class Menu implements Serializable{
         }
     }
 
+
     /**
      * This method is to verify if there are enough ingredients to add the combo
      * @param saucerName The name of the saucer
@@ -162,4 +163,5 @@ public class Menu implements Serializable{
     public ObservableList<Ingredient> getIngredients() {
         return ingredients;
     }
+
 }
