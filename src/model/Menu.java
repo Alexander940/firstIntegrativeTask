@@ -22,24 +22,6 @@ public class Menu implements Serializable{
         ingredients = FXCollections.observableArrayList();
     }
 
-    public ObservableList<MenuItem> getItems(){
-        if(items.isEmpty()) {
-            for (Ingredient ingredient : Restaurant.getInstance().getIngredientsInventory().getIngredients()) {
-                items.add(new MenuItem(ingredient.getName()));
-            }
-        } else {
-            ObservableList<Ingredient> observableIngredients = Restaurant.getInstance().getIngredientsInventory().getIngredients();
-            for(int i = items.size(); i < Restaurant.getInstance().getIngredientsInventory().getIngredients().size(); i++){
-                items.add(new MenuItem(observableIngredients.get(i).getName()));
-            }
-        }
-        return items;
-    }
-
-    public ObservableList<Saucer> getSaucers() {
-        return saucers;
-    }
-
     /**
      * This method add a saucer's instance in array list saucers
      * @param name This is saucer's name
@@ -51,10 +33,6 @@ public class Menu implements Serializable{
         saucers.add(saucer);
         saveSaucers();
         ingredients.clear();
-    }
-
-    public ObservableList<Ingredient> getIngredients() {
-        return ingredients;
     }
 
     /**
@@ -92,6 +70,10 @@ public class Menu implements Serializable{
         return -1;
     }
 
+    /**
+     * This method load the saucers from file saucers.txt
+     * @return An observable list with the saucers
+     */
     private ObservableList<Saucer> loadSaucers(){
         try {
             File file = new File("src/data/saucers.txt");
@@ -108,10 +90,10 @@ public class Menu implements Serializable{
         }
     }
 
-    public void printIngredients(){
-        System.out.println(saucers.get(0).getIngredients().isEmpty());
-    }
-
+    /**
+     * This method save the saucers from observable list saucers
+     * @return This returns a verification if the saucer was successfully saved
+     */
     private boolean saveSaucers(){
         try{
             File file = new File("src/data/saucers.txt");
@@ -126,5 +108,27 @@ public class Menu implements Serializable{
 
             return false;
         }
+    }
+
+    public ObservableList<MenuItem> getItems(){
+        if(items.isEmpty()) {
+            for (Ingredient ingredient : Restaurant.getInstance().getIngredientsInventory().getIngredients()) {
+                items.add(new MenuItem(ingredient.getName()));
+            }
+        } else {
+            ObservableList<Ingredient> observableIngredients = Restaurant.getInstance().getIngredientsInventory().getIngredients();
+            for(int i = items.size(); i < Restaurant.getInstance().getIngredientsInventory().getIngredients().size(); i++){
+                items.add(new MenuItem(observableIngredients.get(i).getName()));
+            }
+        }
+        return items;
+    }
+
+    public ObservableList<Saucer> getSaucers() {
+        return saucers;
+    }
+
+    public ObservableList<Ingredient> getIngredients() {
+        return ingredients;
     }
 }

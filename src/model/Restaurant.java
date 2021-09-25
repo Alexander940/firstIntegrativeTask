@@ -44,6 +44,10 @@ public class Restaurant {
         return ingredientsInventory;
     }
 
+    /**
+     * this method will return an instance of menu
+     * @return this contains the ingredient's inventory
+     */
     public Menu getMenu() {
         return menu;
     }
