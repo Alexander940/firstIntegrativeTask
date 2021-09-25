@@ -8,8 +8,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Ingredient;
 import model.Restaurant;
-import sun.rmi.runtime.Log;
 
 public class AddIngredientSaucer extends Stage {
 
@@ -42,8 +42,6 @@ public class AddIngredientSaucer extends Stage {
     private void init() {
         addBtn.setOnAction(e -> {
             Restaurant.getInstance().getMenu().addIngredient(ingredientMB.getText(), cuantityTF.getText());
-            AddSaucer addSaucer = new AddSaucer();
-            addSaucer.show();
             this.close();
         });
 

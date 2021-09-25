@@ -15,12 +15,12 @@ public class Menu implements Serializable{
 
     private ObservableList<MenuItem> items;
     private ObservableList<Saucer> saucers;
-    private ArrayList<Ingredient> ingredients;
+    private ObservableList<Ingredient> ingredients;
 
     public Menu() {
         items = FXCollections.observableArrayList();
         saucers = loadSaucers();
-        ingredients = new ArrayList<>();
+        ingredients = FXCollections.observableArrayList();
     }
 
     public ObservableList<MenuItem> getItems(){
@@ -47,15 +47,14 @@ public class Menu implements Serializable{
      * @param sPrice This is saucer's price in type String
      */
     public void addSaucer(String name, String sPrice){
-        System.out.println("entro a addSacuer");
         double price = Double.parseDouble(sPrice);
-        Saucer saucer = new Saucer(name, price, ingredients);
+        Saucer saucer = new Saucer(name, price, new ArrayList<Ingredient>(this.ingredients));
         saucers.add(saucer);
-        ingredients.clear();
         saveSaucers();
+        ingredients.clear();
     }
 
-    public ArrayList<Ingredient> getIngredients() {
+    public ObservableList<Ingredient> getIngredients() {
         return ingredients;
     }
 
@@ -69,10 +68,12 @@ public class Menu implements Serializable{
         double quantity = Double.parseDouble(sQuantity);
 
         if(positionIngredient != -1){
-            ingredients.get(positionIngredient).increaseQuantity(quantity);
+            quantity += ingredients.get(positionIngredient).getQuantity();
+            Ingredient ingredient = new Ingredient(ingredients.get(positionIngredient).getName(), quantity);
+            ingredients.remove(positionIngredient);
+            ingredients.add(ingredient);
         } else {
             Ingredient ingredient = new Ingredient(name, quantity);
-            System.out.println(positionIngredient);
             ingredients.add(ingredient);
         }
     }
@@ -106,6 +107,10 @@ public class Menu implements Serializable{
 
             return null;
         }
+    }
+
+    public void printIngredients(){
+        System.out.println(saucers.get(0).getIngredients().isEmpty());
     }
 
     private boolean saveSaucers(){

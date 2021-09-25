@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Restaurant;
-import model.Saucer;
+
 
 
 public class AddOrderSaucer extends Stage {
@@ -41,13 +41,15 @@ public class AddOrderSaucer extends Stage {
 
         addOrderSaucer.setOnAction(event -> {
 
-            //Verificar si los ingredientes del saucer son suficientes
+
             int amount = Integer.parseInt(quantityTF.getText());
             String saucerName = menuBtnCombo.getText();
             if(Restaurant.getInstance().getMenu().verIngredients(saucerName,amount)){
 
 
-                System.out.println("Si hay espacio");
+
+
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Addition completed");
                 alert.setHeaderText(null);

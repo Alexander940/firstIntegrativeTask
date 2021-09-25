@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,14 +39,14 @@ public class AddSaucer extends Stage {
             cuantityColum.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
             table.getColumns().addAll(nameColum, cuantityColum);
-            table.setItems(FXCollections.observableArrayList(Restaurant.getInstance().getMenu().getIngredients()));
+            table.setItems(Restaurant.getInstance().getMenu().getIngredients());
 
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 
             init();
         } catch (Exception ex){
-
+            ex.printStackTrace();
         }
     }
 
@@ -53,16 +54,11 @@ public class AddSaucer extends Stage {
         addIngredientBtn.setOnAction(e -> {
             AddIngredientSaucer addIngredientSaucer = new AddIngredientSaucer();
             addIngredientSaucer.show();
-            this.close();
         });
 
         addSaucerBtn.setOnAction(e -> {
             Restaurant.getInstance().getMenu().addSaucer(nameTF.getText(), priceTF.getText());
-            AdministratorWindow administratorWindow = new AdministratorWindow();
-            administratorWindow.show();
             this.close();
         });
     }
-
-
 }

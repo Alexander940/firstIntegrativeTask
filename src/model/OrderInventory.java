@@ -12,6 +12,8 @@ public class OrderInventory {
     private ArrayList<Saucer> saucers;
     private ObservableList<MenuItem> menuItems;
     private ObservableList<MenuItem> menuOrderItems;
+   private ObservableList<String> nameSaucer;
+    private ObservableList<Integer> quantitySaucer;
 
     public OrderInventory(){
          orders = FXCollections.observableArrayList();
@@ -57,22 +59,20 @@ public class OrderInventory {
         return menuOrderItems;
     }
 
-    /**
-     * Method to add an order
-     * @param order the order that will be added
-     */
-    public void addOrder(Order order){
+/*
+    public void addOrder(String uID,double price,String date){
+        Order order = new Order(uID,OrderStatus.PENDING,date,price);
         orders.add(order);
     }
-/*
-    public void addSaucer(String name,String sPrice){
-        double price = Double.parseDouble(sPrice);
-        Saucer saucer = new Saucer(name,price);
-        saucers.add(saucer);
-    }
-*/
+    
+ */
+
     public ArrayList<Saucer> getSaucers() {
         return saucers;
+    }
+
+    public ObservableList<Order> getOrders() {
+        return orders;
     }
 }
 
