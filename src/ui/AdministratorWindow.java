@@ -73,7 +73,7 @@ public class AdministratorWindow extends Stage {
      */
     private void init(){
         addEmployeeItem.setOnAction(e -> {
-            Restaurant.getInstance().getMenu().printIngredients();
+
             addEmployee = new AddEmployee();
             addEmployee.show();
             this.close();

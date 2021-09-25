@@ -21,7 +21,7 @@ public class ChangeOrderStatus extends Stage {
             changeToPending = (Button) loader.getNamespace().get("changeToPending");
             changeToProcess = (Button) loader.getNamespace().get("changeToProcess");
             changeToDelivered = (Button) loader.getNamespace().get("changeToDelivered");
-            menuBtnOrders.getItems().addAll(Restaurant.getInstance().getOrder().getOrderItems());
+            menuBtnOrders.getItems().addAll(Restaurant.getInstance().getOrdersInventory().getOrderItems());
             Scene scene = new Scene(root,385,310);
             setScene(scene);
             init();
@@ -33,7 +33,7 @@ public class ChangeOrderStatus extends Stage {
 
     public void init(){
 
-        for (MenuItem mItem : Restaurant.getInstance().getOrder().getOrderItems()) {
+        for (MenuItem mItem : Restaurant.getInstance().getOrdersInventory().getOrderItems()) {
             mItem.setOnAction(event -> {
                 menuBtnOrders.setText(mItem.getText());
             });

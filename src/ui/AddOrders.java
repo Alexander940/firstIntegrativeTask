@@ -1,7 +1,6 @@
 package ui;
 
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,6 +35,17 @@ public class AddOrders extends Stage {
             quantitySaucerTable = (TableView) loader.getNamespace().get("quantitySaucerTable");
             addOrder = (Button) loader.getNamespace().get("addOrder");
             datePicker = (DatePicker) loader.getNamespace().get("datePicker");
+            //nameSaucerTable
+            TableColumn<String,String> nameSaucerColumn = new TableColumn<>("NAME");
+           TableColumn<Integer,String> quantitySaucerColumn = new TableColumn<>("QUANTITY");
+
+           nameSaucerTable.getColumns().addAll(nameSaucerColumn);
+           quantitySaucerTable.getColumns().addAll(quantitySaucerColumn);
+
+            nameSaucerTable.setItems(Restaurant.getInstance().getOrdersInventory().getNameSaucer());
+            quantitySaucerTable.setItems(Restaurant.getInstance().getOrdersInventory().getQuantitySaucer());
+
+
 
 
             Scene scene = new Scene(root, 603, 526);
@@ -59,7 +69,7 @@ public class AddOrders extends Stage {
             LocalDate dates = datePicker.getValue();
             double price = 0;
 
-            Restaurant.getInstance().getOrder().addOrder(uId,price,dates.toString());
+            Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
         });
     }
 
