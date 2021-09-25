@@ -14,7 +14,7 @@ import model.Restaurant;
 
 public class OrderList extends Stage {
 
-    TableView table;
+    private TableView table;
     public OrderList(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderList.fxml"));
@@ -28,7 +28,7 @@ public class OrderList extends Stage {
             TableColumn<Order,String> priceColumn  = new TableColumn<>("PRICE");
             // Initialize columns
             nameColumn.setCellValueFactory(new PropertyValueFactory<>("uID"));
-            statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+            statusColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
             dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 

@@ -194,4 +194,10 @@ public class Menu implements Serializable{
         return false;
     }
 
+    public double getPrice(String saucerName){
+        int posSaucer = findSaucerByName(saucerName);
+
+        return saucers.get(posSaucer).getPrice();
+    }
+
 }
