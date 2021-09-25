@@ -17,7 +17,7 @@ import java.io.FileInputStream;
  */
 public class AdministratorWindow extends Stage {
     // Menu items for the Personal module
-    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem;
+    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem, closeItem;
     private ImageView imageView;
     // Menu items for the Inventory module
     private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM, showMenuMI;
@@ -42,6 +42,7 @@ public class AdministratorWindow extends Stage {
             showListEmployeesItem = (MenuItem) loader.getNamespace().get("showListEmployeesItem");
             changePasswordItem = (MenuItem) loader.getNamespace().get("changePasswordItem");
             addSaucerItem = (MenuItem) loader.getNamespace().get("addSaucerItem");
+            closeItem = (MenuItem) loader.getNamespace().get("closeItem");
             showMenuMI = (MenuItem) loader.getNamespace().get("showMenuMI");
             imageView = (ImageView) loader.getNamespace().get("imageView");
             // Fxml for the Inventory module
@@ -142,6 +143,12 @@ public class AdministratorWindow extends Stage {
             MenuList menuList = new MenuList();
             menuList.show();
 
+        });
+
+        closeItem.setOnAction(event -> {
+            Login login = new Login();
+            login.show();
+            this.close();
         });
     }
 }
