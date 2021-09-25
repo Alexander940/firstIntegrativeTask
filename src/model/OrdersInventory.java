@@ -12,7 +12,7 @@ public class OrdersInventory {
     private ArrayList<Saucer> saucers;
     private ObservableList<MenuItem> menuItems;
     private ObservableList<MenuItem> menuOrderItems;
-    private ObservableList<OrdersQuantity> ordersQuantity;
+    private ObservableList<SaucerOrdersQuantity> ordersQuantity;
 
     public OrdersInventory(){
         orders = FXCollections.observableArrayList();
@@ -60,7 +60,7 @@ public class OrdersInventory {
 
 
     public void addOrder(String uID,double price,String date){
-        Order order = new Order(uID,OrderStatus.PENDING,date,price,new ArrayList<OrdersQuantity>(this.ordersQuantity));
+        Order order = new Order(uID,OrderStatus.PENDING,date,price,new ArrayList<SaucerOrdersQuantity>(this.ordersQuantity));
         orders.add(order);
     }
 
@@ -69,17 +69,21 @@ public class OrdersInventory {
     }
 
     public void addSaucer(String name, int quantity){
-        OrdersQuantity orderQuantity = new OrdersQuantity(name, quantity);
+        SaucerOrdersQuantity orderQuantity = new SaucerOrdersQuantity(name, quantity);
         ordersQuantity.add(orderQuantity);
     }
 
-    public ObservableList<OrdersQuantity> getOrdersQuantity() {
+    public ObservableList<SaucerOrdersQuantity> getOrdersQuantity() {
         return ordersQuantity;
     }
 
-    public double getPrice(){
+    public double calculatePrice(){
         double price=0;
-
+        for(int i=0;i<ordersQuantity.size();i++) {
+            ordersQuantity.get(i).getSaucerName();
+            ordersQuantity.get(i).getQuantity();
+            
+        }
         return price;
     }
 }

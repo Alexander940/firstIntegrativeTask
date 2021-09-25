@@ -3,9 +3,6 @@ package model;
 
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -16,9 +13,9 @@ public class Order implements Serializable {
     OrderStatus state;
     String date;
     double price;
-    ArrayList<OrdersQuantity> ordersQuantity;
+    ArrayList<SaucerOrdersQuantity> ordersQuantity;
 
-    public Order(String uId, OrderStatus state, String date, double price, ArrayList<OrdersQuantity> ordersQuantity) {
+    public Order(String uId, OrderStatus state, String date, double price, ArrayList<SaucerOrdersQuantity> ordersQuantity) {
         this.uId = uId;
         this.state = state;
         this.date = date;
@@ -34,7 +31,7 @@ public class Order implements Serializable {
         return uId;
     }
 
-    public ArrayList<OrdersQuantity> getOrdersQuantity() {
+    public ArrayList<SaucerOrdersQuantity> getOrdersQuantity() {
         return ordersQuantity;
     }
 }

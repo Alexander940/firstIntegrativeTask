@@ -34,8 +34,8 @@ public class AddOrders extends Stage {
             addOrder = (Button) loader.getNamespace().get("addOrder");
             datePicker = (DatePicker) loader.getNamespace().get("datePicker");
             //nameSaucerTable
-            TableColumn<OrdersQuantity,String> nameSaucerColumn = new TableColumn<>("Name");
-            TableColumn<OrdersQuantity,String> quantitySaucerColumn = new TableColumn<>("Quantity");
+            TableColumn<SaucerOrdersQuantity,String> nameSaucerColumn = new TableColumn<>("Name");
+            TableColumn<SaucerOrdersQuantity,String> quantitySaucerColumn = new TableColumn<>("Quantity");
 
             nameSaucerColumn.setCellValueFactory(new PropertyValueFactory("orderName"));
             quantitySaucerColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
@@ -62,7 +62,7 @@ public class AddOrders extends Stage {
         addOrder.setOnAction(event -> {
             String uId = UUID.randomUUID().toString();
             LocalDate dates = datePicker.getValue();
-            double price = Restaurant.getInstance().getOrdersInventory().getPrice();
+            double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
 
             Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
         });
