@@ -21,17 +21,7 @@ public class AdministratorWindow extends Stage {
     private ImageView imageView;
     // Menu items for the Inventory module
     private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM, showMenuMI;
-    private EmployeesList employeesList;
-    private AddEmployee addEmployee;
-    private AddIngredient addIngredient;
-    private IngredientList ingredientList;
-    private IncreaseIngredient increaseIngredient;
-    private DecreaseIngredient decreaseIngredient;
-    private DeleteIngredient deleteIngredient;
-    private AddSaucer addSaucer;
     private MenuItem viewOrders,registerOrder,changeOrder;
-    private AddOrders addOrders;
-    private ChangeOrderStatus changeOrderStatus;
 
     public AdministratorWindow() {
         try {
@@ -73,13 +63,13 @@ public class AdministratorWindow extends Stage {
      */
     private void init(){
         addEmployeeItem.setOnAction(e -> {
-            addEmployee = new AddEmployee();
+            AddEmployee addEmployee = new AddEmployee();
             addEmployee.show();
             this.close();
         });
 
         showListEmployeesItem.setOnAction(e -> {
-            employeesList = new EmployeesList();
+            EmployeesList employeesList = new EmployeesList();
             employeesList.show();
         });
 
@@ -90,34 +80,32 @@ public class AdministratorWindow extends Stage {
         });
         // Action for the Inventory module
         addIngredientITEM.setOnAction(event -> {
-            addIngredient = new AddIngredient();
+            AddIngredient addIngredient = new AddIngredient();
             addIngredient.show();
         });
 
-
         showIngredientITEM.setOnAction(event -> {
-        ingredientList = new IngredientList();
-        ingredientList.show();
+            IngredientList ingredientList = new IngredientList();
+            ingredientList.show();
         });
 
         deleteIngredientITEM.setOnAction(event -> {
-        deleteIngredient = new DeleteIngredient();
-        deleteIngredient.show();
+            DeleteIngredient deleteIngredient = new DeleteIngredient();
+            deleteIngredient.show();
         });
 
         increaseIngredientITEM.setOnAction(event -> {
-        increaseIngredient = new IncreaseIngredient();
-        increaseIngredient.show();
+            IncreaseIngredient increaseIngredient = new IncreaseIngredient();
+            increaseIngredient.show();
         });
 
         decreaseIngredientITEM.setOnAction(event -> {
-        decreaseIngredient = new DecreaseIngredient();
-        decreaseIngredient.show();
+            DecreaseIngredient decreaseIngredient = new DecreaseIngredient();
+            decreaseIngredient.show();
         });
 
-
         addSaucerItem.setOnAction(event -> {
-            addSaucer = new AddSaucer();
+            AddSaucer addSaucer = new AddSaucer();
             addSaucer.show();
             this.close();
         });
@@ -129,20 +117,20 @@ public class AdministratorWindow extends Stage {
 
 
         });
+
         changeOrder.setOnAction(event -> {
-            changeOrderStatus = new ChangeOrderStatus();
+            ChangeOrderStatus changeOrderStatus = new ChangeOrderStatus();
             changeOrderStatus.show();
         });
-        registerOrder.setOnAction(event -> {
-        addOrders = new AddOrders();
-        addOrders.show();
-        });
 
+        registerOrder.setOnAction(event -> {
+            AddOrders addOrders = new AddOrders();
+            addOrders.show();
+        });
 
         showMenuMI.setOnAction(event -> {
             MenuList menuList = new MenuList();
             menuList.show();
-
         });
 
         closeItem.setOnAction(event -> {
