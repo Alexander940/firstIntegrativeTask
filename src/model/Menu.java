@@ -129,12 +129,9 @@ public class Menu implements Serializable{
                     name = saucers.get(i).getIngredients().get(b).getName();
                     amount = saucerQuantity * (saucers.get(i).getIngredients().get(b).getQuantity());
 
-                    if (Restaurant.getInstance().getIngredientsInventory().verIngredient(name, amount)) {
-
-                    } else if (saucers.get(i).getIngredients().size() == 0) {
+                    if (!Restaurant.getInstance().getIngredientsInventory().verIngredient(name, amount)) {
                         return false;
                     }
-
                 }
             }
         }

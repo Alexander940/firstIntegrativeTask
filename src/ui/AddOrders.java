@@ -62,7 +62,7 @@ public class AddOrders extends Stage {
         addOrder.setOnAction(event -> {
             String uId = UUID.randomUUID().toString();
             LocalDate dates = datePicker.getValue();
-            double price = 0;
+            double price = Restaurant.getInstance().getOrdersInventory().getPrice();
 
             Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
         });

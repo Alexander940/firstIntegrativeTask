@@ -76,6 +76,12 @@ public class OrdersInventory {
     public ObservableList<OrdersQuantity> getOrdersQuantity() {
         return ordersQuantity;
     }
+
+    public double getPrice(){
+        double price=0;
+
+        return price;
+    }
 }
 
 

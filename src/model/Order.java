@@ -34,7 +34,9 @@ public class Order implements Serializable {
         return uId;
     }
 
-
+    public ArrayList<OrdersQuantity> getOrdersQuantity() {
+        return ordersQuantity;
+    }
 }
 
 
