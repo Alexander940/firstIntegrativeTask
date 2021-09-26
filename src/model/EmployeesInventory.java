@@ -2,6 +2,7 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.MenuItem;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -24,9 +25,13 @@ public class EmployeesInventory implements Serializable {
     }
 
     /**
-     * this method add an employee
-     * @param employee contains the employee to add
-     * @return if the employee was added return true, in another case this returns false
+     * This method add an employee in observable list employees
+     * @param name This is employee's name
+     * @param id This is employee's id
+     * @param birth This is employee's birth
+     * @param password This is employee's password
+     * @param administrator This is true if the employee is an administrator or false in the other case
+     * @return True if the employee was successfully add or false in the other case
      */
     public boolean addEmployee(String name, String id, String birth, String password, boolean administrator){
         Employee employee = new Employee(name, id, birth, password, administrator);
@@ -131,14 +136,37 @@ public class EmployeesInventory implements Serializable {
         int position = -1;
         boolean cent = false;
 
-        for(int i = 0; i < employees.size() && !cent; i++){
-            if(employees.get(i).getId().equals(id)){
+        ArrayList<Employee> employeesArr = bubbleMethod();
+
+        for(int i = 0; i < employeesArr.size() && !cent; i++){
+            if(employeesArr.get(i).getId().equals(id)){
                 position = i;
                 cent = true;
             }
         }
 
         return position;
+    }
+
+    public int findEmployeeByName(String name){
+        employees = FXCollections.observableArrayList(bubbleMethod());
+
+        int start = 0;
+        int end = employees.size()-1;
+
+        while(start<=end){
+            int half = (start+end)/2;
+
+            if(employees.get(half).getName().compareTo(name) == 0){
+                return half;
+            } else if(name.compareTo(employees.get(half).getName()) < 0){
+                end = half-1;
+            } else if(name.compareTo(employees.get(half).getName()) > 0){
+                start = half+1;
+            }
+        }
+
+        return -1;
     }
 
     /**
@@ -152,14 +180,60 @@ public class EmployeesInventory implements Serializable {
         saveEmployees();
     }
 
+    /**
+     * This method check if an employee exist
+     * @param id employee's id to check
+     * @return True if the employee is in the observable list employees or false in the other case
+     */
     public boolean employeeExist(String id){
-        boolean res = false;
         int position = findEmployeeById(id);
 
         if(position != -1){
-            res = true;
+            return true;
         }
 
-        return res;
+        return false;
+    }
+
+    /**
+     * This method applied the bubble method to sort employees by name
+     * @return An array list with the employees sorted
+     */
+    private ArrayList<Employee> bubbleMethod(){
+        ArrayList<Employee> employeesArr = new ArrayList<Employee>(employees);
+
+        Employee auxiliar;
+        for (int i = 0; i < employeesArr.size(); i++){
+            for(int j = 0; j < employeesArr.size()-1; j++){
+                if(employeesArr.get(j).getName().compareTo(employeesArr.get(j+1).getName()) > 0){
+                    auxiliar = employeesArr.get(j);
+                    employeesArr.set(j, employeesArr.get(j+1));
+                    employeesArr.set(j+1, auxiliar);
+                }
+            }
+        }
+
+        return employeesArr;
+    }
+
+    /**
+     * This method calls the bubble method to organize the observable list employees
+     */
+    public void sortEmployees(){
+        employees = FXCollections.observableArrayList(bubbleMethod());
+    }
+
+    /**
+     * This method generate menu items to a menu button
+     * @return An observable list with the menu items
+     */
+    public ObservableList<MenuItem> getItems(){
+        ObservableList<MenuItem> items = FXCollections.observableArrayList();
+
+        for(Employee employee: employees){
+            items.add(new MenuItem(employee.getName()));
+        }
+
+        return items;
     }
 }

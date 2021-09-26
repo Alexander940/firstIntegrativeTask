@@ -125,6 +125,7 @@ public class OrdersInventory implements Serializable {
         }
     }
 
+<<<<<<< HEAD
     public void changeStatus(String uid,String status){
 
         for(int i=0;i<orders.size();i++){
@@ -156,6 +157,12 @@ public class OrdersInventory implements Serializable {
 
 
 
+=======
+    public void assignOrderEmployee(String name){
+        int position = Restaurant.getInstance().getEmployeesInventory().findEmployeeByName(name);
+
+        Restaurant.getInstance().getEmployeesInventory().getEmployees().get(position).addOrder();
+>>>>>>> 422671fa6e3e188da8f31f937f6f64b2217a3b8a
     }
 }
 

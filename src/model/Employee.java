@@ -16,6 +16,7 @@ public class Employee implements Serializable {
     private String dateOfBirth;
     private String password;
     private boolean administrator;
+    private int numOrders;
 
     public Employee(String name, String id, String dateOfBirth, String password, boolean administrator) {
         this.name = name;
@@ -55,6 +56,14 @@ public class Employee implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getNumOrders() {
+        return numOrders;
+    }
+
+    public void addOrder(){
+        numOrders++;
     }
 
     @Override
