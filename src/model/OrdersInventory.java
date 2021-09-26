@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdersInventory implements Serializable{
+public class OrdersInventory implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private ObservableList<Order> orders;
@@ -16,7 +16,7 @@ public class OrdersInventory implements Serializable{
     private ObservableList<MenuItem> menuOrderItems;
     private ObservableList<SaucerOrdersQuantity> ordersQuantity;
 
-    public OrdersInventory(){
+    public OrdersInventory() {
         this.orders = loadOrders();
         menuItems = FXCollections.observableArrayList();
         menuOrderItems = FXCollections.observableArrayList();
@@ -24,15 +24,15 @@ public class OrdersInventory implements Serializable{
 
     }
 
-    public ObservableList<MenuItem> getItems(){
-        if(menuItems.isEmpty()) {
+    public ObservableList<MenuItem> getItems() {
+        if (menuItems.isEmpty()) {
             for (Saucer saucer : Restaurant.getInstance().getMenu().getSaucers()) {
 
                 menuItems.add(new MenuItem(saucer.getName()));
             }
-        }else{
+        } else {
 
-            for(int i=menuItems.size();i<Restaurant.getInstance().getMenu().getSaucers().size();i++){
+            for (int i = menuItems.size(); i < Restaurant.getInstance().getMenu().getSaucers().size(); i++) {
                 menuItems.add(new MenuItem(Restaurant.getInstance().getMenu().getSaucers().get(i).getName()));
             }
 
@@ -97,6 +97,7 @@ public class OrdersInventory implements Serializable{
             File file = new File("src/data/orders.txt");
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream output = new ObjectOutputStream(fos);
+
             output.writeObject(new ArrayList<Order>(this.orders));
             output.close();
 
@@ -124,10 +125,44 @@ public class OrdersInventory implements Serializable{
         }
     }
 
+<<<<<<< HEAD
+    public void changeStatus(String uid,String status){
+
+        for(int i=0;i<orders.size();i++){
+            if(orders.get(i).getuID().equals(uid)){
+                orders.get(i).setState(OrderStatus.valueOf(status));
+            }
+        }
+    }
+
+    // M E T O D O           P O R           T E R M I N A R
+    public void orderByInsertion(){
+
+        for(int i=1;i<orders.size();i++){
+
+            for(int b=0;b<i;b++){
+
+                double externo = orders.get(i).getPrice();
+                double interno = orders.get(b).getPrice();
+
+                if(externo<interno){
+                    orders.remove(i);
+                    orders.add(b,orders.get(i));
+                    break;
+                }
+
+            }
+
+        }
+
+
+
+=======
     public void assignOrderEmployee(String name){
         int position = Restaurant.getInstance().getEmployeesInventory().findEmployeeByName(name);
 
         Restaurant.getInstance().getEmployeesInventory().getEmployees().get(position).addOrder();
+>>>>>>> 422671fa6e3e188da8f31f937f6f64b2217a3b8a
     }
 }
 

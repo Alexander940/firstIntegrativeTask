@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+
 import model.Restaurant;
 
 
@@ -41,14 +42,17 @@ public class ChangeOrderStatus extends Stage {
         }
 
     changeToDelivered.setOnAction(event -> {
-
+        String uId = menuBtnOrders.getText();
+        Restaurant.getInstance().getOrdersInventory().changeStatus(uId, "DELIVERED");
     });
     changeToProcess.setOnAction(event -> {
-
+        String uId = menuBtnOrders.getText();
+        Restaurant.getInstance().getOrdersInventory().changeStatus(uId, "IN_PROCESS");
     });
 
     changeToPending.setOnAction(event -> {
-
+        String uId = menuBtnOrders.getText();
+        Restaurant.getInstance().getOrdersInventory().changeStatus(uId, "PENDING");
     });
     }
 

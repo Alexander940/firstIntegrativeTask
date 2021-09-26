@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import model.Order;
 import model.Restaurant;
 
+import java.util.UUID;
+
 public class OrderList extends Stage {
 
     private TableView<Order> table;

@@ -17,8 +17,8 @@ import java.io.IOException;
  */
 public class IncreaseIngredient extends Stage {
 
-    TextField ingredientName,amountAdd;
-    Button addBtn;
+    private TextField ingredientName,amountAdd;
+    private Button addBtn;
     public IncreaseIngredient(){
 
 

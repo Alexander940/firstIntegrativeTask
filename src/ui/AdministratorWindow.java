@@ -7,8 +7,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.Restaurant;
 
 import java.io.FileInputStream;
+import java.util.Collections;
 
 /**
  * This class controls the window that it allows manage the program's module
@@ -87,6 +89,8 @@ public class AdministratorWindow extends Stage {
         showIngredientITEM.setOnAction(event -> {
             IngredientList ingredientList = new IngredientList();
             ingredientList.show();
+            Collections.sort(Restaurant.getInstance().getIngredientsInventory().getIngredients());
+
         });
 
         deleteIngredientITEM.setOnAction(event -> {
@@ -103,6 +107,7 @@ public class AdministratorWindow extends Stage {
             DecreaseIngredient decreaseIngredient = new DecreaseIngredient();
             decreaseIngredient.show();
         });
+        // Action for Saucer module
 
         addSaucerItem.setOnAction(event -> {
             AddSaucer addSaucer = new AddSaucer();
@@ -115,6 +120,7 @@ public class AdministratorWindow extends Stage {
         viewOrders.setOnAction(event -> {
             OrderList orderList = new OrderList();
             orderList.show();
+            Restaurant.getInstance().getOrdersInventory().orderByInsertion();
         });
 
         changeOrder.setOnAction(event -> {
