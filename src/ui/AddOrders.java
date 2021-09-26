@@ -24,10 +24,7 @@ public class AddOrders extends Stage {
     private Button addSaucerCombo,addOrder;
     private TableView table;
     private DatePicker datePicker;
-<<<<<<< HEAD
-=======
-    private MenuButton employeesMenuBtn;
->>>>>>> 422671fa6e3e188da8f31f937f6f64b2217a3b8a
+    private TextField employeeNameTF;
 
     public AddOrders(){
         try {
@@ -38,7 +35,7 @@ public class AddOrders extends Stage {
             table = (TableView) loader.getNamespace().get("table");
             addOrder = (Button) loader.getNamespace().get("addOrder");
             datePicker = (DatePicker) loader.getNamespace().get("datePicker");
-            employeesMenuBtn = (MenuButton) loader.getNamespace().get("employeesMenuBtn");
+            employeeNameTF = (TextField) loader.getNamespace().get("employeeNameTF");
             //nameSaucerTable
             TableColumn<SaucerOrdersQuantity,String> nameSaucerColumn = new TableColumn<>("Name");
             TableColumn<SaucerOrdersQuantity,String> quantitySaucerColumn = new TableColumn<>("Quantity");
@@ -53,14 +50,6 @@ public class AddOrders extends Stage {
 
             table.getColumns().addAll(nameSaucerColumn ,quantitySaucerColumn);
             table.setItems(Restaurant.getInstance().getOrdersInventory().getOrdersQuantity());
-
-            employeesMenuBtn.getItems().addAll(Restaurant.getInstance().getEmployeesInventory().getItems());
-
-            for(MenuItem mi: Restaurant.getInstance().getEmployeesInventory().getItems()){
-                mi.setOnAction(event->{
-                    employeesMenuBtn.setText(mi.getText());
-                });
-            }
 
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
@@ -79,11 +68,51 @@ public class AddOrders extends Stage {
         });
 
         addOrder.setOnAction(event -> {
-            String uId = UUID.randomUUID().toString();
-            LocalDate dates = datePicker.getValue();
-            double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
-            Restaurant.getInstance().getOrdersInventory().assignOrderEmployee(employeesMenuBtn.getText());
-            Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
+            if(verificationFields()) {
+                if (Restaurant.getInstance().getEmployeesInventory().employeeExist("", employeeNameTF.getText())) {
+                    String uId = UUID.randomUUID().toString();
+                    LocalDate dates = datePicker.getValue();
+                    double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
+                    Restaurant.getInstance().getOrdersInventory().assignOrderEmployee(employeeNameTF.getText(), price);
+                    Restaurant.getInstance().getOrdersInventory().assignOrderSaucer(dates.toString());
+                    Restaurant.getInstance().getOrdersInventory().addOrder(uId, price, dates.toString());
+                } else {
+                    errorAlert("Error", "This employe doesn't exists", "Ooops");
+                }
+            } else {
+                errorAlert("Error", "You should fill all fields", "Ooops");
+            }
         });
+    }
+
+    /**
+     * This method shows an alert
+     * @param title this contains alert's title
+     * @param header this contains alert's header
+     * @param contentText this contains alert's content text
+     */
+    private void errorAlert(String title, String header, String contentText){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
+
+    /**
+     * This method verify if the fields are fill
+     * @return True if the all fields are fill or false in the other case
+     */
+    private boolean verificationFields(){
+        if(Restaurant.getInstance().getOrdersInventory().getOrdersQuantity().isEmpty()){
+            return false;
+        } else if(datePicker.getValue().toString().equals("")){
+            return false;
+        } else if(employeeNameTF.getText().equals("")){
+            return false;
+        }
+
+        return true;
     }
 }

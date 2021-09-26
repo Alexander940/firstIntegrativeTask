@@ -17,6 +17,7 @@ public class Employee implements Serializable {
     private String password;
     private boolean administrator;
     private int numOrders;
+    private double quantitySold;
 
     public Employee(String name, String id, String dateOfBirth, String password, boolean administrator) {
         this.name = name;
@@ -64,6 +65,14 @@ public class Employee implements Serializable {
 
     public void addOrder(){
         numOrders++;
+    }
+
+    public double getQuantitySold() {
+        return quantitySold;
+    }
+
+    public void increaseQuantitySold(double quantitySold){
+        this.quantitySold += quantitySold;
     }
 
     @Override

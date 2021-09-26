@@ -100,7 +100,7 @@ public class Menu implements Serializable{
      * This method save the saucers from observable list saucers
      * @return This returns a verification if the saucer was successfully saved
      */
-    private boolean saveSaucers(){
+    public boolean saveSaucers(){
         try{
             File file = new File("src/data/saucers.txt");
             FileOutputStream fos = new FileOutputStream(file);
@@ -115,7 +115,6 @@ public class Menu implements Serializable{
             return false;
         }
     }
-
 
     /**
      * This method is to verify if there are enough ingredients to add the combo
@@ -171,7 +170,7 @@ public class Menu implements Serializable{
      * @param name This is the name of saucer for searching
      * @return The position the saucer found in the observable list saucer. If the saucer isn't found return -1
      */
-    private int findSaucerByName(String name){
+    public int findSaucerByName(String name){
         for(int i = 0; i < saucers.size(); i++){
             if(saucers.get(i).getName().equals(name)){
                 return i;
@@ -216,7 +215,5 @@ public class Menu implements Serializable{
                 }
             }
         }
-
-
     }
 }

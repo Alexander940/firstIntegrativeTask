@@ -57,7 +57,7 @@ public class AddEmployee extends Stage {
     private void init() {
         setImageBtn();
         createBtn.setOnAction(e -> {
-            if(!Restaurant.getInstance().getEmployeesInventory().employeeExist(idTF.getText())) {
+            if(!Restaurant.getInstance().getEmployeesInventory().employeeExist(idTF.getText(), "") && !Restaurant.getInstance().getEmployeesInventory().employeeExist("", nameTF.getText())) {
                 if (verificationFields()) {
                     if (passwordPF.getText().equals(confirmPasswordPF.getText())) {
                         String name = nameTF.getText();

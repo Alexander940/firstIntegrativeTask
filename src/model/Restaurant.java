@@ -1,5 +1,10 @@
 package model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * This class manage all logic of the restaurant
  * @author Alexander Echeverry
@@ -59,14 +64,53 @@ public class Restaurant {
     }
 
     public void generateReportEmployees(){
-
+        try {
+            String report = generateTextReportEmployees();
+            File file = new File("src/reports/employeesReport.txt");
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(report.getBytes());
+            fos.close();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     private String generateTextReportEmployees(){
-        String report = "";
+        String report = "Name - Orders num - Quantity sold\n";
 
-        for(int i = 0; i < employeesInventory.getEmployees().size(); i++){
+        for(Employee employee: employeesInventory.getEmployees()){
+            report += employee.getName() + " - " + employee.getNumOrders() + " - " + employee.getQuantitySold() + "\n";
+        }
 
+        return report;
+    }
+
+    public void generateReportSaucers(){
+        try {
+            String report = generateTextReportSaucers();
+            File file = new File("src/reports/saucersReport.txt");
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(report.getBytes());
+            fos.close();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    private String generateTextReportSaucers(){
+        String report = "Name - Units sold - Quantity paid\n";
+        int unitsSold = 0;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String actualDate = dtf.format(LocalDateTime.now());
+
+
+        for(Saucer saucer: menu.getSaucers()){
+            for(int i = 0; i < saucer.getQuantitySold().size(); i++){
+                if(saucer.getQuantitySold().get(i).getDate().equals(actualDate)){
+                    unitsSold += saucer.getQuantitySold().get(i).getUnitsSold();
+                }
+            }
+            report += saucer.getName() + " - " + unitsSold + " - " + (unitsSold* saucer.getPrice()) + "\n";
         }
 
         return report;
