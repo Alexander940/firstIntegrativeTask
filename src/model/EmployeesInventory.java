@@ -73,7 +73,7 @@ public class EmployeesInventory implements Serializable {
      * this save an array list with the employees
      * @return if the array list was successfully saved returns true in another case return false
      */
-    private boolean saveEmployees(){
+    public boolean saveEmployees(){
         try{
             File file = new File("src/data/employees.txt");
             FileOutputStream fos = new FileOutputStream(file);
@@ -185,11 +185,19 @@ public class EmployeesInventory implements Serializable {
      * @param id employee's id to check
      * @return True if the employee is in the observable list employees or false in the other case
      */
-    public boolean employeeExist(String id){
-        int position = findEmployeeById(id);
+    public boolean employeeExist(String id, String name){
+        if(!id.equals("")) {
+            int position = findEmployeeById(id);
 
-        if(position != -1){
-            return true;
+            if (position != -1) {
+                return true;
+            }
+        } else {
+            int position = findEmployeeByName(name);
+
+            if(position != -1){
+                return true;
+            }
         }
 
         return false;

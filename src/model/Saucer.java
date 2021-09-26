@@ -15,14 +15,13 @@ public class Saucer implements Serializable {
     private String name;
     private double price;
     private ArrayList<Ingredient> ingredients;
-
-
+    private ArrayList<QuantitySold> quantitySold;
 
     public Saucer(String name, double price, ArrayList<Ingredient> ingredients) {
         this.name = name;
         this.price = price;
         this.ingredients = cloneIngredients(ingredients);
-
+        this.quantitySold = new ArrayList<>();
     }
 
     public String getName() {
@@ -63,6 +62,14 @@ public class Saucer implements Serializable {
         return ingredientsSave;
     }
 
+    public void addQuantitySold(QuantitySold quantitySold){
+        this.quantitySold.add(quantitySold);
+    }
+
+    public ArrayList<QuantitySold> getQuantitySold() {
+        return quantitySold;
+    }
+
     @Override
     public String toString() {
         String output;
@@ -72,6 +79,4 @@ public class Saucer implements Serializable {
 
         return output;
     }
-
-
 }

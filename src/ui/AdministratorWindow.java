@@ -19,7 +19,7 @@ import java.util.Collections;
  */
 public class AdministratorWindow extends Stage {
     // Menu items for the Personal module
-    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem, closeItem;
+    private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem, closeItem, employeesReportMI, saucersReportMI;
     private ImageView imageView;
     // Menu items for the Inventory module
     private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM, showMenuMI;
@@ -36,6 +36,8 @@ public class AdministratorWindow extends Stage {
             addSaucerItem = (MenuItem) loader.getNamespace().get("addSaucerItem");
             closeItem = (MenuItem) loader.getNamespace().get("closeItem");
             showMenuMI = (MenuItem) loader.getNamespace().get("showMenuMI");
+            employeesReportMI = (MenuItem) loader.getNamespace().get("employeesReportMI");
+            saucersReportMI = (MenuItem) loader.getNamespace().get("saucersReportMI");
             imageView = (ImageView) loader.getNamespace().get("imageView");
             // Fxml for the Inventory module
             addIngredientITEM = (MenuItem) loader.getNamespace().get("addIngredientITEM");
@@ -120,7 +122,11 @@ public class AdministratorWindow extends Stage {
         viewOrders.setOnAction(event -> {
             OrderList orderList = new OrderList();
             orderList.show();
+<<<<<<< HEAD
             // Restaurant.getInstance().getOrdersInventory().orderByInsertion();
+=======
+            //Restaurant.getInstance().getOrdersInventory().orderByInsertion();
+>>>>>>> b96cefe1893c4ba18e5a82af511d5798fcdd3916
         });
 
         changeOrder.setOnAction(event -> {
@@ -142,6 +148,14 @@ public class AdministratorWindow extends Stage {
             Login login = new Login();
             login.show();
             this.close();
+        });
+
+        employeesReportMI.setOnAction(e -> {
+            Restaurant.getInstance().generateReportEmployees();
+        });
+
+        saucersReportMI.setOnAction(event -> {
+            Restaurant.getInstance().generateReportSaucers();
         });
     }
 }
