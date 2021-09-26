@@ -40,12 +40,17 @@ public class AddOrders extends Stage {
             nameSaucerColumn.setCellValueFactory(new PropertyValueFactory("saucerName"));
             quantitySaucerColumn.setCellValueFactory(new PropertyValueFactory("quantity"));
 
-            table.getColumns().addAll(nameSaucerColumn ,quantitySaucerColumn);
+            nameSaucerColumn.setMinWidth(100);
+            quantitySaucerColumn.setMinWidth(100);
+            nameSaucerColumn.setMaxWidth(100);
+            quantitySaucerColumn.setMaxWidth(100);
 
+            table.getColumns().addAll(nameSaucerColumn ,quantitySaucerColumn);
             table.setItems(Restaurant.getInstance().getOrdersInventory().getOrdersQuantity());
 
-            Scene scene = new Scene(root, 603, 526);
+            Scene scene = new Scene(root, 600, 400);
             setScene(scene);
+
             init();
         }catch (Exception ex){
             ex.printStackTrace();
@@ -64,10 +69,6 @@ public class AddOrders extends Stage {
             LocalDate dates = datePicker.getValue();
             double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
             Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
-
         });
     }
-
-
-
 }

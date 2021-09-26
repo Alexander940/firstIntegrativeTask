@@ -39,6 +39,17 @@ public class EmployeesList extends Stage {
             passwordColum.setCellValueFactory(new PropertyValueFactory<>("password"));
             adminColum.setCellValueFactory(new PropertyValueFactory<>("administrator"));
 
+            usernameColum.setMaxWidth(120);
+            usernameColum.setMinWidth(120);
+            idColum.setMaxWidth(120);
+            idColum.setMinWidth(120);
+            dateOfBirthColum.setMaxWidth(120);
+            dateOfBirthColum.setMinWidth(120);
+            passwordColum.setMaxWidth(120);
+            passwordColum.setMinWidth(120);
+            adminColum.setMaxWidth(120);
+            adminColum.setMinWidth(120);
+
             table.getColumns().addAll(usernameColum, idColum, dateOfBirthColum, passwordColum, adminColum);
             table.setItems(Restaurant.getInstance().getEmployeesInventory().getEmployees());
 

@@ -10,6 +10,6 @@
       <Button fx:id="addOrder" layoutX="241.0" layoutY="331.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="119.0" text="Add order" />
       <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="281.0" prefHeight="24.0" prefWidth="176.0" promptText="Choose a date" />
       <Button fx:id="addSaucerCombo" layoutX="263.0" layoutY="233.0" mnemonicParsing="false" text="Add saucer" />
-      <TableView fx:id="table" layoutX="213.0" layoutY="69.0" prefHeight="148.0" prefWidth="176.0" />
+      <TableView fx:id="table" layoutX="204.0" layoutY="69.0" prefHeight="148.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

@@ -81,7 +81,7 @@ public class IngredientsInventory implements Serializable {
      */
     public boolean increaseIngredient(String ingredientName,double amount){
         for(int i=0;i<ingredients.size();i++){
-            if(ingredients.get(i).getName().equals(ingredientName)){
+            if(ingredients.get(i).getName().equalsIgnoreCase(ingredientName)){
                 ingredients.get(i).increaseQuantity(amount);
 
                 return true;

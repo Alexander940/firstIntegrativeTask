@@ -4,7 +4,6 @@ package model;
 
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -12,27 +11,26 @@ public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    String uId;
+    String uID;
     OrderStatus state;
     String date;
     double price;
     ArrayList<SaucerOrdersQuantity> ordersQuantity;
 
-    public Order(String uId, OrderStatus state, String date, double price, ArrayList<SaucerOrdersQuantity> ordersQuantity) {
-        this.uId = uId;
+    public Order(String uID, OrderStatus state, String date, double price, ArrayList<SaucerOrdersQuantity> ordersQuantity) {
+        this.uID = uID;
         this.state = state;
         this.date = date;
         this.price = price;
         this.ordersQuantity = cloneSaucerOrdersQuantity(ordersQuantity);
-
     }
 
     public void setState(OrderStatus state) {
         this.state = state;
     }
 
-    public String getuId() {
-        return uId;
+    public String getuID() {
+        return uID;
     }
 
     public ArrayList<SaucerOrdersQuantity> getOrdersQuantity() {
@@ -52,13 +50,18 @@ public class Order implements Serializable {
     }
 
     private ArrayList<SaucerOrdersQuantity> cloneSaucerOrdersQuantity(ArrayList<SaucerOrdersQuantity> saucerOrdersQuantity){
-        for(int i=0;i<saucerOrdersQuantity.size();i++){
+        ArrayList<SaucerOrdersQuantity> saucerOrder = new ArrayList<>();
+
+        for(int i = 0 ;i < saucerOrdersQuantity.size() ;i++){
+
             String name = saucerOrdersQuantity.get(i).getSaucerName();
             int quantity = saucerOrdersQuantity.get(i).getQuantity();
+
             SaucerOrdersQuantity saucerOrdersQuantity1 = new SaucerOrdersQuantity(name,quantity);
-            saucerOrdersQuantity.add(saucerOrdersQuantity1);
+            saucerOrder.add(saucerOrdersQuantity1);
         }
-        return saucerOrdersQuantity;
+
+        return saucerOrder;
     }
 }
 

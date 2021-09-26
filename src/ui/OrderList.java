@@ -22,25 +22,23 @@ public class OrderList extends Stage {
             table = (TableView) loader.getNamespace().get("table");
 
             // Create columns
-            TableColumn<Order, String> nameColumn = new TableColumn("ID");
+            TableColumn<Order, String> uidColumn = new TableColumn("ID");
             TableColumn<Order, String> statusColumn = new TableColumn("STATUS");
             TableColumn<Order, String> dateColumn = new TableColumn("DATE");
             TableColumn<Order, String> priceColumn = new TableColumn("PRICE");
             // Initialize columns
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("uId"));
+            uidColumn.setCellValueFactory(new PropertyValueFactory<>("uID"));
             statusColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
             dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-            table.getColumns().addAll(nameColumn,statusColumn,dateColumn,priceColumn);
+            table.getColumns().addAll(uidColumn,statusColumn,dateColumn,priceColumn);
             table.setItems(Restaurant.getInstance().getOrdersInventory().getOrders());
-
-            System.out.println(Restaurant.getInstance().getOrdersInventory().getOrders().get(0).getuId());
-
-            init();
 
             Scene scene = new Scene(root,600,400);
             setScene(scene);
+
+            init();
         }catch (Exception ex){
             ex.printStackTrace();
         }

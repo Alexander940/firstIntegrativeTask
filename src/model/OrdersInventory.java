@@ -47,12 +47,12 @@ public class OrdersInventory implements Serializable{
     public ObservableList<MenuItem> getOrderItems(){
         if(menuOrderItems.isEmpty()){
             for(Order order :  orders){
-                menuOrderItems.add(new MenuItem(order.getuId()));
+                menuOrderItems.add(new MenuItem(order.getuID()));
 
             }
         }else{
             for(int i=menuOrderItems.size();i<orders.size();i++){
-                menuOrderItems.add(new MenuItem(orders.get(i).getuId()));
+                menuOrderItems.add(new MenuItem(orders.get(i).getuID()));
             }
         }
         return menuOrderItems;
@@ -62,7 +62,6 @@ public class OrdersInventory implements Serializable{
         Order order = new Order(uID,OrderStatus.PENDING,date,price,new ArrayList<SaucerOrdersQuantity>(this.ordersQuantity));
         orders.add(order);
         for(int i=0;i<ordersQuantity.size();i++){
-
             Restaurant.getInstance().getMenu().delVerIngredients(ordersQuantity.get(i).getSaucerName(),ordersQuantity.get(i).getQuantity());
         }
         saveOrder();
@@ -71,7 +70,6 @@ public class OrdersInventory implements Serializable{
     }
 
     public ObservableList<Order> getOrders() {
-        System.out.println(orders.get(0).getuId());
         return orders;
     }
 
