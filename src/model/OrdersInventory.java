@@ -12,7 +12,6 @@ public class OrdersInventory implements Serializable{
 
     private static final long serialVersionUID = 1L;
     private ObservableList<Order> orders;
-    private ArrayList<Saucer> saucers;
     private ObservableList<MenuItem> menuItems;
     private ObservableList<MenuItem> menuOrderItems;
     private ObservableList<SaucerOrdersQuantity> ordersQuantity;
@@ -20,12 +19,10 @@ public class OrdersInventory implements Serializable{
     public OrdersInventory(){
         this.orders = loadOrders();
         menuItems = FXCollections.observableArrayList();
-        saucers = new ArrayList<>();
         menuOrderItems = FXCollections.observableArrayList();
         ordersQuantity = FXCollections.observableArrayList();
     }
-
-
+    
     public ObservableList<MenuItem> getItems(){
         if(menuItems.isEmpty()) {
             for (Saucer saucer : Restaurant.getInstance().getMenu().getSaucers()) {
@@ -59,7 +56,6 @@ public class OrdersInventory implements Serializable{
         }
         return menuOrderItems;
     }
-
 
     public void addOrder(String uID,double price,String date){
         Order order = new Order(uID,OrderStatus.PENDING,date,price,new ArrayList<SaucerOrdersQuantity>(this.ordersQuantity));
