@@ -47,6 +47,7 @@ public class AddOrderSaucer extends Stage {
 
                 Restaurant.getInstance().getOrdersInventory().addSaucer(saucerName, amount);
 
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Addition completed");
                 alert.setHeaderText(null);

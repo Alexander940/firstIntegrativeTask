@@ -120,7 +120,7 @@ public class AdministratorWindow extends Stage {
         viewOrders.setOnAction(event -> {
             OrderList orderList = new OrderList();
             orderList.show();
-            Restaurant.getInstance().getOrdersInventory().orderByInsertion();
+            // Restaurant.getInstance().getOrdersInventory().orderByInsertion();
         });
 
         changeOrder.setOnAction(event -> {

@@ -24,10 +24,8 @@ public class AddOrders extends Stage {
     private Button addSaucerCombo,addOrder;
     private TableView table;
     private DatePicker datePicker;
-<<<<<<< HEAD
-=======
     private MenuButton employeesMenuBtn;
->>>>>>> 422671fa6e3e188da8f31f937f6f64b2217a3b8a
+
 
     public AddOrders(){
         try {
@@ -66,9 +64,10 @@ public class AddOrders extends Stage {
     }
 
     private void init() {
-        for(MenuItem mi: Restaurant.getInstance().getEmployeesInventory().getItems()){
-            mi.setOnAction(e -> {
-                employeesMenuBtn.setText(mi.getText());
+
+        for(MenuItem mI: Restaurant.getInstance().getEmployeesInventory().getItems()){
+            mI.setOnAction(e -> {
+                employeesMenuBtn.setText(mI.getText());
             });
         }
 
