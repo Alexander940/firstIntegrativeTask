@@ -123,6 +123,12 @@ public class OrdersInventory implements Serializable{
             return null;
         }
     }
+
+    public void assignOrderEmployee(String name){
+        int position = Restaurant.getInstance().getEmployeesInventory().findEmployeeByName(name);
+
+        Restaurant.getInstance().getEmployeesInventory().getEmployees().get(position).addOrder();
+    }
 }
 
 

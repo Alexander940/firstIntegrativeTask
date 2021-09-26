@@ -28,7 +28,6 @@ public class Restaurant {
         this.ingredientsInventory = new IngredientsInventory();
         this.menu = new Menu();
         this.ordersInventory = new OrdersInventory();
-
     }
 
     /**
@@ -54,7 +53,22 @@ public class Restaurant {
     public Menu getMenu() {
         return menu;
     }
+
     public OrdersInventory getOrdersInventory(){
         return ordersInventory;
+    }
+
+    public void generateReportEmployees(){
+
+    }
+
+    private String generateTextReportEmployees(){
+        String report = "";
+
+        for(int i = 0; i < employeesInventory.getEmployees().size(); i++){
+
+        }
+
+        return report;
     }
 }

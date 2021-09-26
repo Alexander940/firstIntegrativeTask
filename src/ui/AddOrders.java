@@ -21,18 +21,21 @@ import java.util.UUID;
 public class AddOrders extends Stage {
 
 
-    Button addSaucerCombo,addOrder;
-    TableView table;
-    DatePicker datePicker;
+    private Button addSaucerCombo,addOrder;
+    private TableView table;
+    private DatePicker datePicker;
+    private MenuButton employeesMenuBtn;
 
     public AddOrders(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddOrders.fxml"));
             Parent root = loader.load();
+
             addSaucerCombo = (Button) loader.getNamespace().get("addSaucerCombo");
             table = (TableView) loader.getNamespace().get("table");
             addOrder = (Button) loader.getNamespace().get("addOrder");
             datePicker = (DatePicker) loader.getNamespace().get("datePicker");
+            employeesMenuBtn = (MenuButton) loader.getNamespace().get("employeesMenuBtn");
             //nameSaucerTable
             TableColumn<SaucerOrdersQuantity,String> nameSaucerColumn = new TableColumn<>("Name");
             TableColumn<SaucerOrdersQuantity,String> quantitySaucerColumn = new TableColumn<>("Quantity");
@@ -48,6 +51,8 @@ public class AddOrders extends Stage {
             table.getColumns().addAll(nameSaucerColumn ,quantitySaucerColumn);
             table.setItems(Restaurant.getInstance().getOrdersInventory().getOrdersQuantity());
 
+            employeesMenuBtn.getItems().addAll(Restaurant.getInstance().getEmployeesInventory().getItems());
+
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 
@@ -58,6 +63,12 @@ public class AddOrders extends Stage {
     }
 
     private void init() {
+        for(MenuItem mi: Restaurant.getInstance().getEmployeesInventory().getItems()){
+            mi.setOnAction(e -> {
+                employeesMenuBtn.setText(mi.getText());
+            });
+        }
+
         addSaucerCombo.setOnAction(event -> {
             AddOrderSaucer addOrderSaucer = new AddOrderSaucer();
             addOrderSaucer.show();
@@ -68,6 +79,7 @@ public class AddOrders extends Stage {
             String uId = UUID.randomUUID().toString();
             LocalDate dates = datePicker.getValue();
             double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
+            Restaurant.getInstance().getOrdersInventory().assignOrderEmployee(employeesMenuBtn.getText());
             Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
         });
     }
