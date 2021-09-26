@@ -27,7 +27,7 @@ public class OrderList extends Stage {
             TableColumn<Order,String> dateColumn  = new TableColumn<>("DATE");
             TableColumn<Order,String> priceColumn  = new TableColumn<>("PRICE");
             // Initialize columns
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("uID"));
+            nameColumn.setCellValueFactory(new PropertyValueFactory<>("uId"));
             statusColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
             dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));

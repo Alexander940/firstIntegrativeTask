@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -163,6 +164,20 @@ public class IngredientsInventory implements Serializable {
         }
 
         return true;
+
+    }
+
+    public void decreaseVerIngredient(String ingredientName, double amount){
+        double newQuantity;
+
+        for(int i=0;i<ingredients.size();i++){
+            if(ingredients.get(i).getName().equals(ingredientName)){
+
+                newQuantity = ingredients.get(i).getQuantity() - amount;
+
+                ingredients.get(i).setQuantity(newQuantity);
+            }
+        }
 
     }
 }

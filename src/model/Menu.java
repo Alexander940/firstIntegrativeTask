@@ -200,4 +200,23 @@ public class Menu implements Serializable{
         return saucers.get(posSaucer).getPrice();
     }
 
+    public void delVerIngredients(String saucerName,int saucerQuantity) {
+        String name;
+        double amount;
+        for (int i = 0; i < saucers.size(); i++) {
+
+            if (saucers.get(i).getName().equals(saucerName)) {
+
+                for (int b = 0; b < saucers.get(i).getIngredients().size(); b++) {
+                    name = saucers.get(i).getIngredients().get(b).getName();
+
+                    amount = saucerQuantity * (saucers.get(i).getIngredients().get(b).getQuantity());
+
+                    Restaurant.getInstance().getIngredientsInventory().decreaseVerIngredient(name,amount);
+                }
+            }
+        }
+
+
+    }
 }

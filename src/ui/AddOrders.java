@@ -64,6 +64,7 @@ public class AddOrders extends Stage {
             LocalDate dates = datePicker.getValue();
             double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
             Restaurant.getInstance().getOrdersInventory().addOrder(uId,price,dates.toString());
+
         });
     }
 
