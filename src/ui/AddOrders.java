@@ -21,9 +21,9 @@ import java.util.UUID;
 public class AddOrders extends Stage {
 
 
-    Button addSaucerCombo,addOrder;
-    TableView table;
-    DatePicker datePicker;
+    private Button addSaucerCombo,addOrder;
+    private TableView table;
+    private DatePicker datePicker;
 
     public AddOrders(){
         try {

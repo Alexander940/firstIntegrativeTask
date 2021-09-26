@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author David Molta
  * @version 1.0
  */
-public class Ingredient implements Serializable {
+public class Ingredient implements Comparable<Ingredient>,Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -61,5 +61,19 @@ public class Ingredient implements Serializable {
 
     public void increaseQuantity(double amount){
         this.quantity = this.quantity + amount;
+    }
+
+    @Override
+    public int compareTo(Ingredient o) {
+        int optiona = this.unitOfMeasurement.compareTo(o.unitOfMeasurement);
+        if(optiona==0){
+        int optionb = (int)(this.quantity - o.getQuantity());
+        if(optionb==0){
+            int optionc = this.name.compareTo(o.getName());
+            return optionc;
+        }else return optionb;
+
+        }else return optiona;
+
     }
 }

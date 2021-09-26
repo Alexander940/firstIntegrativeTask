@@ -19,11 +19,11 @@ import model.Restaurant;
  */
 
 public class AddIngredient extends Stage {
-    TextField ingredientName, ingredientQuantity;
-    SplitMenuButton unitChooser;
-    MenuItem kgUnits, gUnits, mlUnits, unitUnits;
-    Button ingredientaddBtn;
-    String units;
+    private TextField ingredientName, ingredientQuantity;
+    private SplitMenuButton unitChooser;
+    private MenuItem kgUnits, gUnits, mlUnits, unitUnits;
+    private Button ingredientaddBtn;
+    private String units;
 
 
 

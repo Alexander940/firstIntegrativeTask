@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 import model.Restaurant;
 
 public class DecreaseIngredient extends Stage {
-    TextField ingredientName,amountSubs;
-    Button decreaseBtn;
+    private TextField ingredientName,amountSubs;
+    private Button decreaseBtn;
     public DecreaseIngredient(){
 
         try{
