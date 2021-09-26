@@ -22,7 +22,7 @@ public class OrdersInventory implements Serializable{
         menuOrderItems = FXCollections.observableArrayList();
         ordersQuantity = FXCollections.observableArrayList();
     }
-    
+
     public ObservableList<MenuItem> getItems(){
         if(menuItems.isEmpty()) {
             for (Saucer saucer : Restaurant.getInstance().getMenu().getSaucers()) {
