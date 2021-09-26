@@ -53,6 +53,12 @@ public class AddOrders extends Stage {
 
             employeesMenuBtn.getItems().addAll(Restaurant.getInstance().getEmployeesInventory().getItems());
 
+            for(MenuItem mi: Restaurant.getInstance().getEmployeesInventory().getItems()){
+                mi.setOnAction(event->{
+                    employeesMenuBtn.setText(mi.getText());
+                });
+            }
+
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 
@@ -63,12 +69,6 @@ public class AddOrders extends Stage {
     }
 
     private void init() {
-        for(MenuItem mi: Restaurant.getInstance().getEmployeesInventory().getItems()){
-            mi.setOnAction(e -> {
-                employeesMenuBtn.setText(mi.getText());
-            });
-        }
-
         addSaucerCombo.setOnAction(event -> {
             AddOrderSaucer addOrderSaucer = new AddOrderSaucer();
             addOrderSaucer.show();
