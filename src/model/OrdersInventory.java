@@ -60,7 +60,6 @@ public class OrdersInventory implements Serializable {
         return menuOrderItems;
     }
 
-
     /**
      * Method to add an order to the ObservableList of Order
      * @param uID The uId of the order
@@ -98,15 +97,11 @@ public class OrdersInventory implements Serializable {
         return ordersQuantity;
     }
 
-
     /**
      * Method to calculate the total price of an oder
      * @return The total price
      */
-
-
     public double calculatePrice() {
-
         double price;
         double totalPrice = 0;
         for (int i = 0; i < ordersQuantity.size(); i++) {
@@ -116,13 +111,10 @@ public class OrdersInventory implements Serializable {
         return totalPrice;
     }
 
-
     /**
      * Method to save the orders
      * @return True of false depending on the save success
      */
-
-
     private boolean saveOrder() {
         try {
 
@@ -140,13 +132,10 @@ public class OrdersInventory implements Serializable {
         }
     }
 
-
     /**
      * Method to load the orders that were saved
      * @return An observableList with all the orders
      */
-
-
     private ObservableList<Order> loadOrders() {
 
         try {
@@ -164,17 +153,12 @@ public class OrdersInventory implements Serializable {
         }
     }
 
-
     /**
      * Method to change the status of an Order
      * @param uid The uId of the Order
      * @param status The new status of the order
      */
-
-
     public void changeStatus(String uid, String status) {
-
-
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getuID().equals(uid)) {
                 orders.get(i).setState(OrderStatus.valueOf(status));
@@ -183,12 +167,19 @@ public class OrdersInventory implements Serializable {
         saveOrder();
     }
 
+<<<<<<< HEAD
 
     public void orderBySelection() {
 
         int pos = 0;
         while(pos < orders.size()){
             Order min = orders.get(pos);
+=======
+    // M E T O D O           P O R           T E R M I N A R
+    public void orderByInsertion() {
+        for (int i = 1; i < orders.size(); i++) {
+            for (int b = 0; b < i; b++) {
+>>>>>>> 1b5b5f520619f503cd9ee9f6dd5d2319a7b6f013
 
             for(int i = pos+1; i < orders.size(); i++){
                 if( orders.get(i).getPrice() < min.getPrice()){
@@ -197,8 +188,11 @@ public class OrdersInventory implements Serializable {
                     min = temp;
                 }
             }
+<<<<<<< HEAD
             orders.set(pos,min);
             pos++;
+=======
+>>>>>>> 1b5b5f520619f503cd9ee9f6dd5d2319a7b6f013
         }
     }
 
@@ -263,14 +257,12 @@ public class OrdersInventory implements Serializable {
                     if (!verIngredient(name, amount)) {
                         return false;
                     }
-
-
                 }
             }
         }
-
         return true;
     }
+
     /**
      * This method will help to check if there are enough ingredients to create the combo
      * @param ingredientName The name of the ingredient to search
@@ -278,9 +270,9 @@ public class OrdersInventory implements Serializable {
      * @return
      */
     public boolean verIngredient(String ingredientName,double amount){
-
         ArrayList<Integer> arrayInt = new ArrayList<Integer>();
         ArrayList<Double> arrayDouble = new ArrayList<Double>();
+
         for(int i=0;i<cloneIngredients.size();i++){
             if(cloneIngredients.get(i).getName().equals(ingredientName)){
                 if(cloneIngredients.get(i).getQuantity()-amount<0){
@@ -295,12 +287,16 @@ public class OrdersInventory implements Serializable {
                 }
             }
         }
+
         for(int i=0;i<arrayInt.size();i++){
             cloneIngredients.get(arrayInt.get(i)).setQuantity(cloneIngredients.get(arrayInt.get(i)).getQuantity()-arrayDouble.get(i));
-
         }
-        return true;
 
+        return true;
+    }
+
+    public ArrayList<Ingredient> getCloneIngredients() {
+        return cloneIngredients;
     }
 }
 

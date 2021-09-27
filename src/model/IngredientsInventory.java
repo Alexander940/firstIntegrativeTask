@@ -4,8 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +17,6 @@ public class IngredientsInventory implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private ObservableList<Ingredient> ingredients;
-
 
     public IngredientsInventory() {
         ingredients = loadIngredients();
@@ -93,7 +90,6 @@ public class IngredientsInventory implements Serializable {
         return false;
     }
 
-
     /**
      * This method will decrease an ingredient by an amount registered by the user
      * @param ingredientName the name of the ingredient
@@ -105,7 +101,7 @@ public class IngredientsInventory implements Serializable {
 
         for(int i=0;i<ingredients.size();i++){
 
-            if(ingredients.get(i).getName().equals(ingredientName)){
+            if(ingredients.get(i).getName().equalsIgnoreCase(ingredientName)){
 
                 if(ingredients.get(i).getQuantity()-amount<0){
                     break;
@@ -156,8 +152,6 @@ public class IngredientsInventory implements Serializable {
         }
 
     }
-
-
 }
 
 

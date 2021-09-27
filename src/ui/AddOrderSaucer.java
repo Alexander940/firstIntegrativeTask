@@ -40,13 +40,11 @@ public class AddOrderSaucer extends Stage {
 
         addOrderSaucer.setOnAction(event -> {
 
-
             int amount = Integer.parseInt(quantityTF.getText());
             String saucerName = menuBtnCombo.getText();
             if(Restaurant.getInstance().getOrdersInventory().verIngredients(saucerName,amount)){
 
                 Restaurant.getInstance().getOrdersInventory().addSaucer(saucerName, amount);
-
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Addition completed");

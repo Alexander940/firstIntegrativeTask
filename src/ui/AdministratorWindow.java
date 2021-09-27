@@ -131,11 +131,18 @@ public class AdministratorWindow extends Stage {
         });
 
         registerOrder.setOnAction(event -> {
+<<<<<<< HEAD
 
             AddOrders addOrders = new AddOrders();
             addOrders.show();
             Restaurant.getInstance().getOrdersInventory().cloneIngredients();
 
+=======
+            Restaurant.getInstance().getOrdersInventory().cloneIngredients();
+            AddOrders addOrders = new AddOrders();
+            addOrders.show();
+            this.close();
+>>>>>>> 1b5b5f520619f503cd9ee9f6dd5d2319a7b6f013
         });
 
         showMenuMI.setOnAction(event -> {
