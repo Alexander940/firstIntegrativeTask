@@ -1,3 +1,3 @@
 Name - Orders num - Quantity sold
 Alexander Echeverry - 6 - 120000.0
-David Molta - 2 - 50000.0
+David Molta - 4 - 70000.0

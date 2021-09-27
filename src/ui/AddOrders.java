@@ -1,35 +1,28 @@
 package ui;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.time.LocalDate;
 
 import java.util.UUID;
 
-/**
- *  this class is a controller of window to add an order
- *  @author David Molta =)
- *  @version 1.0
- */
 public class AddOrders extends Stage {
 
-
-    private Button addSaucerCombo,addOrder;
+    private Button addSaucerCombo,addOrder, getOutBtn;
     private TableView table;
     private DatePicker datePicker;
-
     private MenuButton employeesMenuBtn;
-
-
     private TextField employeeNameTF;
-
 
     public AddOrders(){
         try {
@@ -41,6 +34,7 @@ public class AddOrders extends Stage {
             addOrder = (Button) loader.getNamespace().get("addOrder");
             datePicker = (DatePicker) loader.getNamespace().get("datePicker");
             employeeNameTF = (TextField) loader.getNamespace().get("employeeNameTF");
+            getOutBtn = (Button) loader.getNamespace().get("getOutBtn");
             //nameSaucerTable
             TableColumn<SaucerOrdersQuantity,String> nameSaucerColumn = new TableColumn<>("Name");
             TableColumn<SaucerOrdersQuantity,String> quantitySaucerColumn = new TableColumn<>("Quantity");
@@ -66,13 +60,21 @@ public class AddOrders extends Stage {
     }
 
     private void init() {
+        setImageBtn();
 
+        getOutBtn.setOnAction(e -> {
+            Restaurant.getInstance().getOrdersInventory().getCloneIngredients().clear();
+            AdministratorWindow administratorWindow = new AdministratorWindow();
+            administratorWindow.show();
+            this.close();
+        });
 
         for(MenuItem mI: Restaurant.getInstance().getEmployeesInventory().getItems()){
             mI.setOnAction(e -> {
                 employeesMenuBtn.setText(mI.getText());
             });
         }
+
         addSaucerCombo.setOnAction(event -> {
             AddOrderSaucer addOrderSaucer = new AddOrderSaucer();
             addOrderSaucer.show();
@@ -129,6 +131,7 @@ public class AddOrders extends Stage {
 
         return true;
     }
+
     /**
      * This method shows an alert
      * @param title this contains alert's title
@@ -142,6 +145,18 @@ public class AddOrders extends Stage {
         alert.setContentText(contentText);
 
         alert.showAndWait();
+    }
+
+    private void setImageBtn(){
+        try {
+            File file = new File("src/img/flechaAtras.jpg");
+            FileInputStream input = new FileInputStream(file);
+            Image imageFlecha = new Image(input, 36,24, true, true);
+
+            getOutBtn.setGraphic(new ImageView(imageFlecha));
+        } catch (Exception e){
+
+        }
     }
 
 }
