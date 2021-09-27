@@ -18,15 +18,7 @@ public class QuantitySold implements Serializable {
         return unitsSold;
     }
 
-    public void setUnitsSold(int unitsSold) {
-        this.unitsSold = unitsSold;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 }

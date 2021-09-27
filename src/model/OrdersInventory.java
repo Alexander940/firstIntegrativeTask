@@ -117,7 +117,6 @@ public class OrdersInventory implements Serializable {
      */
     private boolean saveOrder() {
         try {
-
             File file = new File("src/data/orders.txt");
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream output = new ObjectOutputStream(fos);
@@ -167,19 +166,10 @@ public class OrdersInventory implements Serializable {
         saveOrder();
     }
 
-<<<<<<< HEAD
-
     public void orderBySelection() {
-
         int pos = 0;
         while(pos < orders.size()){
             Order min = orders.get(pos);
-=======
-    // M E T O D O           P O R           T E R M I N A R
-    public void orderByInsertion() {
-        for (int i = 1; i < orders.size(); i++) {
-            for (int b = 0; b < i; b++) {
->>>>>>> 1b5b5f520619f503cd9ee9f6dd5d2319a7b6f013
 
             for(int i = pos+1; i < orders.size(); i++){
                 if( orders.get(i).getPrice() < min.getPrice()){
@@ -188,11 +178,8 @@ public class OrdersInventory implements Serializable {
                     min = temp;
                 }
             }
-<<<<<<< HEAD
             orders.set(pos,min);
             pos++;
-=======
->>>>>>> 1b5b5f520619f503cd9ee9f6dd5d2319a7b6f013
         }
     }
 
