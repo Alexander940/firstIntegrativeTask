@@ -24,12 +24,12 @@ public class AddOrders extends Stage {
     private Button addSaucerCombo,addOrder;
     private TableView table;
     private DatePicker datePicker;
-<<<<<<< HEAD
+
     private MenuButton employeesMenuBtn;
 
-=======
+
     private TextField employeeNameTF;
->>>>>>> b96cefe1893c4ba18e5a82af511d5798fcdd3916
+
 
     public AddOrders(){
         try {
@@ -66,16 +66,13 @@ public class AddOrders extends Stage {
     }
 
     private void init() {
-<<<<<<< HEAD
+
 
         for(MenuItem mI: Restaurant.getInstance().getEmployeesInventory().getItems()){
             mI.setOnAction(e -> {
                 employeesMenuBtn.setText(mI.getText());
             });
         }
-
-=======
->>>>>>> b96cefe1893c4ba18e5a82af511d5798fcdd3916
         addSaucerCombo.setOnAction(event -> {
             AddOrderSaucer addOrderSaucer = new AddOrderSaucer();
             addOrderSaucer.show();
@@ -86,11 +83,13 @@ public class AddOrders extends Stage {
             if(verificationFields()) {
                 if (Restaurant.getInstance().getEmployeesInventory().employeeExist("", employeeNameTF.getText())) {
                     String uId = UUID.randomUUID().toString();
+
                     LocalDate dates = datePicker.getValue();
                     double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
                     Restaurant.getInstance().getOrdersInventory().assignOrderEmployee(employeeNameTF.getText(), price);
                     Restaurant.getInstance().getOrdersInventory().assignOrderSaucer(dates.toString());
                     Restaurant.getInstance().getOrdersInventory().addOrder(uId, price, dates.toString());
+                    confirmationAlert("=)","UID: "+ uId,"Please save this uId to take control of your order");
                 } else {
                     errorAlert("Error", "This employe doesn't exists", "Ooops");
                 }
@@ -130,4 +129,19 @@ public class AddOrders extends Stage {
 
         return true;
     }
+    /**
+     * This method shows an alert
+     * @param title this contains alert's title
+     * @param header this contains alert's header
+     * @param contentText this contains alert's content text
+     */
+    private void confirmationAlert(String title, String header, String contentText){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
+
 }

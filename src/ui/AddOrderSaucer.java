@@ -43,7 +43,7 @@ public class AddOrderSaucer extends Stage {
 
             int amount = Integer.parseInt(quantityTF.getText());
             String saucerName = menuBtnCombo.getText();
-            if(Restaurant.getInstance().getMenu().verIngredients(saucerName,amount)){
+            if(Restaurant.getInstance().getOrdersInventory().verIngredients(saucerName,amount)){
 
                 Restaurant.getInstance().getOrdersInventory().addSaucer(saucerName, amount);
 

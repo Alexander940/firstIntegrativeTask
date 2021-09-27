@@ -122,12 +122,8 @@ public class AdministratorWindow extends Stage {
         viewOrders.setOnAction(event -> {
             OrderList orderList = new OrderList();
             orderList.show();
-<<<<<<< HEAD
             // Restaurant.getInstance().getOrdersInventory().orderByInsertion();
-=======
-            //Restaurant.getInstance().getOrdersInventory().orderByInsertion();
->>>>>>> b96cefe1893c4ba18e5a82af511d5798fcdd3916
-        });
+          });
 
         changeOrder.setOnAction(event -> {
             ChangeOrderStatus changeOrderStatus = new ChangeOrderStatus();
@@ -137,6 +133,7 @@ public class AdministratorWindow extends Stage {
         registerOrder.setOnAction(event -> {
             AddOrders addOrders = new AddOrders();
             addOrders.show();
+            Restaurant.getInstance().getOrdersInventory().cloneIngredients();
         });
 
         showMenuMI.setOnAction(event -> {

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class IngredientsInventory implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private ObservableList<Ingredient> ingredients;
+
 
     public IngredientsInventory() {
         ingredients = loadIngredients();
@@ -141,32 +143,6 @@ public class IngredientsInventory implements Serializable {
         return condition;
     }
 
-    /**
-     * This method will help to check if there are enough ingredients to create the combo
-     * @param ingredientName The name of the ingredient to search
-     * @param amount The amount of the ingredient
-     * @return
-     */
-    public boolean verIngredient(String ingredientName,double amount){
-
-        for(int i=0;i<ingredients.size();i++){
-            if(ingredients.get(i).getName().equals(ingredientName)){
-                if(ingredients.get(i).getQuantity()-amount<0){
-                    return false;
-
-                }else if(ingredients.get(i).getQuantity()-amount>0){
-
-
-                }else if(ingredients.get(i).getQuantity()-amount==0){
-
-                }
-           }
-        }
-
-        return true;
-
-    }
-
     public void decreaseVerIngredient(String ingredientName, double amount){
         double newQuantity;
 
@@ -180,6 +156,8 @@ public class IngredientsInventory implements Serializable {
         }
 
     }
+
+
 }
 
 

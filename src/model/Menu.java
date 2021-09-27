@@ -116,33 +116,6 @@ public class Menu implements Serializable{
         }
     }
 
-    /**
-     * This method is to verify if there are enough ingredients to add the combo
-     * @param saucerName The name of the saucer
-     * @param saucerQuantity The quantity of combos that the user wanted
-     * @return Returns a true or false depending on the verification // False no space // True there's space
-     */
-    public boolean verIngredients(String saucerName,int saucerQuantity) {
-
-        String name;
-        double amount;
-        for (int i = 0; i < saucers.size(); i++) {
-
-            if (saucers.get(i).getName().equals(saucerName)) {
-
-                for (int b = 0; b < saucers.get(i).getIngredients().size(); b++) {
-                    name = saucers.get(i).getIngredients().get(b).getName();
-                    amount = saucerQuantity * (saucers.get(i).getIngredients().get(b).getQuantity());
-
-                    if (!Restaurant.getInstance().getIngredientsInventory().verIngredient(name, amount)) {
-                        return false;
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
 
     public ObservableList<MenuItem> getItems(){
         if(items.isEmpty()) {
