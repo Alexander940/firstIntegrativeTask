@@ -3,12 +3,14 @@ package ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.Restaurant;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -58,9 +60,21 @@ public class Login extends Stage {
      */
     private void init(){
         joinBtn.setOnAction(event->{
-            administratorWindow = new AdministratorWindow();
-            administratorWindow.show();
-            this.close();
+            if(Restaurant.getInstance().getEmployeesInventory().verificationLogin(idTF.getText(),passwordPF.getText())) {
+                administratorWindow = new AdministratorWindow();
+                administratorWindow.show();
+                this.close();
+            }else {
+
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("WRONG DATA");
+                alert.setHeaderText("Check your data!!!");
+                alert.setContentText("Check your password and username or verify that you are an admin");
+
+               alert.showAndWait();
+
+
+            }
         });
 
     }
