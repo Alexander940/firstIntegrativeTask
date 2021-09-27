@@ -3,10 +3,7 @@ package ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Ingredient;
 import model.Restaurant;
@@ -59,9 +56,13 @@ public class AddIngredient extends Stage {
             String name = ingredientName.getText();
             Double quantity = Double.parseDouble(ingredientQuantity.getText());
             Ingredient ingredient = new Ingredient(name,units,quantity);
-            System.out.println(ingredient);
             Restaurant.getInstance().getIngredientsInventory().addIngredient(ingredient);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Addition Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("The ingredient was correctly added");
 
+            alert.showAndWait();
         });
 
         kgUnits.setOnAction(event -> {

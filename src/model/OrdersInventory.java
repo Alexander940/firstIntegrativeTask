@@ -183,24 +183,22 @@ public class OrdersInventory implements Serializable {
         saveOrder();
     }
 
-    // M E T O D O           P O R           T E R M I N A R
-    public void orderByInsertion() {
 
-        for (int i = 1; i < orders.size(); i++) {
+    public void orderBySelection() {
 
-            for (int b = 0; b < i; b++) {
+        int pos = 0;
+        while(pos < orders.size()){
+            Order min = orders.get(pos);
 
-                double externo = orders.get(i).getPrice();
-                double interno = orders.get(b).getPrice();
-
-                if (externo < interno) {
-                    orders.remove(i);
-                    orders.add(b, orders.get(i));
-                    break;
+            for(int i = pos+1; i < orders.size(); i++){
+                if( orders.get(i).getPrice() < min.getPrice()){
+                    Order temp = orders.get(i);
+                    orders.set(i,min);
+                    min = temp;
                 }
-
             }
-
+            orders.set(pos,min);
+            pos++;
         }
     }
 
@@ -250,6 +248,7 @@ public class OrdersInventory implements Serializable {
      * @return Returns a true or false depending on the verification // False no space // True there's space
      */
     public boolean verIngredients(String saucerName,int saucerQuantity) {
+
         ArrayList<Saucer> saucers = new ArrayList<Saucer>(Restaurant.getInstance().getMenu().getSaucers());
         String name;
         double amount;
