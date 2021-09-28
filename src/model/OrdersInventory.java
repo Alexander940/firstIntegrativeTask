@@ -66,8 +66,8 @@ public class OrdersInventory implements Serializable {
      * @param price The total price of the Order
      * @param date The Date that the user selected
      */
-    public void addOrder(String uID, double price, String date) {
-        Order order = new Order(uID, OrderStatus.PENDING, date, price, new ArrayList<SaucerOrdersQuantity>(this.ordersQuantity));
+    public void addOrder(String uID, double price, String date, String employeeName) {
+        Order order = new Order(uID, OrderStatus.PENDING, date, price, new ArrayList<SaucerOrdersQuantity>(this.ordersQuantity), employeeName);
 
         orders.add(order);
         for (int i = 0; i < ordersQuantity.size(); i++) {
@@ -187,13 +187,8 @@ public class OrdersInventory implements Serializable {
      * This method assign an order to employee did it
      * @param name This is employee's name
      */
-    public void assignOrderEmployee(String name, double quantitySold){
-
-        int position = Restaurant.getInstance().getEmployeesInventory().findEmployeeByName(name);
-        Restaurant.getInstance().getEmployeesInventory().getEmployees().get(position).addOrder();
-
-        Restaurant.getInstance().getEmployeesInventory().getEmployees().get(position).increaseQuantitySold(quantitySold);
-        Restaurant.getInstance().getEmployeesInventory().saveEmployees();
+    public void assignOrderEmployee(String name, double quantitySold, String date){
+        Restaurant.getInstance().getEmployeesInventory().assignOrder(name, quantitySold, date);
     }
 
     public void assignOrderSaucer(String date){

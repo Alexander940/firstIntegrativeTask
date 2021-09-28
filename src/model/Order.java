@@ -11,18 +11,20 @@ public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    String uID;
-    OrderStatus state;
-    String date;
-    double price;
-    ArrayList<SaucerOrdersQuantity> ordersQuantity;
+    private String uID;
+    private OrderStatus state;
+    private String date;
+    private double price;
+    private ArrayList<SaucerOrdersQuantity> ordersQuantity;
+    private String employeeName;
 
-    public Order(String uID, OrderStatus state, String date, double price, ArrayList<SaucerOrdersQuantity> ordersQuantity) {
+    public Order(String uID, OrderStatus state, String date, double price, ArrayList<SaucerOrdersQuantity> ordersQuantity, String employeeName) {
         this.uID = uID;
         this.state = state;
         this.date = date;
         this.price = price;
         this.ordersQuantity = cloneSaucerOrdersQuantity(ordersQuantity);
+        this.employeeName = employeeName;
     }
 
     public void setState(OrderStatus state) {
@@ -48,7 +50,6 @@ public class Order implements Serializable {
     public double getPrice() {
         return price;
     }
-
 
     private ArrayList<SaucerOrdersQuantity> cloneSaucerOrdersQuantity(ArrayList<SaucerOrdersQuantity> saucerOrdersQuantity){
         ArrayList<SaucerOrdersQuantity> saucerOrder = new ArrayList<>();

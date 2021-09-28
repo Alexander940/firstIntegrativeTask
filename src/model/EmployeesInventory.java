@@ -22,6 +22,7 @@ public class EmployeesInventory implements Serializable {
 
     public EmployeesInventory() {
         this.employees = loadEmployees();
+        System.out.println("");
     }
 
     /**
@@ -73,7 +74,7 @@ public class EmployeesInventory implements Serializable {
      * this save an array list with the employees
      * @return if the array list was successfully saved returns true in another case return false
      */
-    public boolean saveEmployees(){
+    private boolean saveEmployees(){
         try{
             File file = new File("src/data/employees.txt");
             FileOutputStream fos = new FileOutputStream(file);
@@ -114,36 +115,25 @@ public class EmployeesInventory implements Serializable {
      * @return it returns true if the user exists and the password and input are equals
      */
     public boolean verificationLogin(String id ,String inputPassword){
-<<<<<<< HEAD
-        for(Employee employee: employees){
-            if(employee.getId().equals(id)){
-                if(employee.getPassword().equals(inputPassword)){
-                    return true;
-                }
-            }
-        }
-
-        return false;
-=======
         int position = findEmployeeByName(id);
         boolean verification = false;
+        System.out.println(position);
         if(position!=-1){
             if(employees.get(position).getPassword().equals(inputPassword)){
 
-                if(employees.get(position).isAdministrator()==true){
+                if(employees.get(position).isAdministrator()){
 
                     return true;
 
-                }else verification= false;
+                }else {verification= false;}
 
-            }else verification = false;
+            }else {verification = false;}
 
         }else {
 
             verification = false;
         }
         return  verification;
->>>>>>> bf436b2417f049f59c1a54ffa519e1f3ced740a9
     }
 
     /**
@@ -183,6 +173,7 @@ public class EmployeesInventory implements Serializable {
             } else if(name.compareTo(employees.get(half).getName()) > 0){
                 start = half+1;
             }
+            System.out.println(half);
         }
 
         return -1;
@@ -262,5 +253,14 @@ public class EmployeesInventory implements Serializable {
         }
 
         return items;
+    }
+
+    public void assignOrder(String name, double price, String date){
+        int position = findEmployeeByName(name);
+
+        QuantitySold quantitySold = new QuantitySold(date, price);
+        employees.get(position).addQuantitySold(quantitySold);
+
+        saveEmployees();
     }
 }

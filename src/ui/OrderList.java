@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 import model.Order;
 import model.Restaurant;
 
-import java.util.UUID;
-
 public class OrderList extends Stage {
 
     private TableView<Order> table;
@@ -24,18 +22,27 @@ public class OrderList extends Stage {
             table = (TableView) loader.getNamespace().get("table");
 
             // Create columns
-            TableColumn<Order, String> uidColumn = new TableColumn("ID");
-            TableColumn<Order, String> statusColumn = new TableColumn("STATUS");
-            TableColumn<Order, String> dateColumn = new TableColumn("DATE");
-            TableColumn<Order, String> priceColumn = new TableColumn("PRICE");
+            TableColumn<Order, String> statusColumn = new TableColumn("Status");
+            TableColumn<Order, String> dateColumn = new TableColumn("Date");
+            TableColumn<Order, String> priceColumn = new TableColumn("Price");
+            TableColumn<Order, String> employeeNameColumn = new TableColumn("Employee name");
             // Initialize columns
-            uidColumn.setCellValueFactory(new PropertyValueFactory<>("uID"));
             statusColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
             dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+            employeeNameColumn.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
 
-            table.getColumns().addAll(uidColumn,statusColumn,dateColumn,priceColumn);
+            table.getColumns().addAll(statusColumn,dateColumn,priceColumn,employeeNameColumn);
             table.setItems(Restaurant.getInstance().getOrdersInventory().getOrders());
+
+            employeeNameColumn.setMinWidth(150);
+            statusColumn.setMinWidth(150);
+            dateColumn.setMinWidth(150);
+            priceColumn.setMinWidth(150);
+            employeeNameColumn.setMaxWidth(150);
+            statusColumn.setMaxWidth(150);
+            dateColumn.setMaxWidth(150);
+            priceColumn.setMaxWidth(150);
 
             Scene scene = new Scene(root,600,400);
             setScene(scene);

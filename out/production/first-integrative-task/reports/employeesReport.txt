@@ -1,0 +1,3 @@
+Name - Orders num - Quantity sold
+Alexander Echeverry - 2 - 4000.0
+David Molta - 2 - 10000.0

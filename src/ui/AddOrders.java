@@ -88,10 +88,13 @@ public class AddOrders extends Stage {
 
                     LocalDate dates = datePicker.getValue();
                     double price = Restaurant.getInstance().getOrdersInventory().calculatePrice();
-                    Restaurant.getInstance().getOrdersInventory().assignOrderEmployee(employeeNameTF.getText(), price);
+                    Restaurant.getInstance().getOrdersInventory().assignOrderEmployee(employeeNameTF.getText(), price, dates.toString());
                     Restaurant.getInstance().getOrdersInventory().assignOrderSaucer(dates.toString());
-                    Restaurant.getInstance().getOrdersInventory().addOrder(uId, price, dates.toString());
+                    Restaurant.getInstance().getOrdersInventory().addOrder(uId, price, dates.toString(),employeeNameTF.getText());
                     confirmationAlert("=)","UID: "+ uId,"Please save this uId to take control of your order");
+                    AdministratorWindow administratorWindow = new AdministratorWindow();
+                    administratorWindow.show();
+                    this.close();
                 } else {
                     errorAlert("Error", "This employe doesn't exists", "Ooops");
                 }

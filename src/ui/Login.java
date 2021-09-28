@@ -27,7 +27,6 @@ public class Login extends Stage {
     private PasswordField passwordPF;
     private Button joinBtn;
     private ImageView imageView;
-
     private AdministratorWindow administratorWindow;
 
     public Login(){
@@ -65,17 +64,13 @@ public class Login extends Stage {
                 administratorWindow.show();
                 this.close();
             }else {
-
-               Alert alert = new Alert(Alert.AlertType.WARNING);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("WRONG DATA");
                 alert.setHeaderText("Check your data!!!");
                 alert.setContentText("Check your password and username or verify that you are an admin");
 
-               alert.showAndWait();
-
-
+                alert.showAndWait();
             }
         });
-
     }
 }

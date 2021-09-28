@@ -73,6 +73,12 @@ public class AddSaucer extends Stage {
                 errorAlert("Error", "You should fill all fields", "Ooops");
             }
         });
+
+        getOutBtn.setOnAction(e -> {
+            AdministratorWindow administratorWindow = new AdministratorWindow();
+            administratorWindow.show();
+            this.close();
+        });
     }
 
     /**

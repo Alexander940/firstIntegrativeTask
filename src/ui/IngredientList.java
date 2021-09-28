@@ -32,6 +32,12 @@ public class IngredientList extends Stage {
             tableView.getColumns().addAll(nameColumn,measurementColumn,quantityColumn);
             tableView.setItems(Restaurant.getInstance().getIngredientsInventory().getIngredients());
 
+            nameColumn.setMaxWidth(200);
+            measurementColumn.setMaxWidth(200);
+            quantityColumn.setMaxWidth(200);
+            nameColumn.setMinWidth(200);
+            measurementColumn.setMinWidth(200);
+            quantityColumn.setMinWidth(200);
 
             Scene scene = new Scene(root,600,400);
             setScene(scene);

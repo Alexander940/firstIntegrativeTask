@@ -18,12 +18,10 @@ public class Menu implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    private ObservableList<MenuItem> items;
     private ObservableList<Saucer> saucers;
     private ObservableList<Ingredient> ingredients;
 
     public Menu() {
-        items = FXCollections.observableArrayList();
         saucers = loadSaucers();
         ingredients = FXCollections.observableArrayList();
     }
@@ -114,21 +112,6 @@ public class Menu implements Serializable{
 
             return false;
         }
-    }
-
-
-    public ObservableList<MenuItem> getItems(){
-        if(items.isEmpty()) {
-            for (Ingredient ingredient : Restaurant.getInstance().getIngredientsInventory().getIngredients()) {
-                items.add(new MenuItem(ingredient.getName()));
-            }
-        } else {
-            ObservableList<Ingredient> observableIngredients = Restaurant.getInstance().getIngredientsInventory().getIngredients();
-            for(int i = items.size(); i < Restaurant.getInstance().getIngredientsInventory().getIngredients().size(); i++){
-                items.add(new MenuItem(observableIngredients.get(i).getName()));
-            }
-        }
-        return items;
     }
 
     public ObservableList<Saucer> getSaucers() {

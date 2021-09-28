@@ -2,6 +2,7 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.MenuItem;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,8 +18,10 @@ public class IngredientsInventory implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private ObservableList<Ingredient> ingredients;
+    private ObservableList<MenuItem> items;
 
     public IngredientsInventory() {
+        items = FXCollections.observableArrayList();
         ingredients = loadIngredients();
     }
 
@@ -151,6 +154,20 @@ public class IngredientsInventory implements Serializable {
             }
         }
 
+    }
+
+    public ObservableList<MenuItem> getMenuItems(){
+        if(items.isEmpty()) {
+            for (Ingredient ingredient : Restaurant.getInstance().getIngredientsInventory().getIngredients()) {
+                items.add(new MenuItem(ingredient.getName()));
+            }
+        } else {
+            ObservableList<Ingredient> observableIngredients = Restaurant.getInstance().getIngredientsInventory().getIngredients();
+            for(int i = items.size(); i < Restaurant.getInstance().getIngredientsInventory().getIngredients().size(); i++){
+                items.add(new MenuItem(observableIngredients.get(i).getName()));
+            }
+        }
+        return items;
     }
 }
 

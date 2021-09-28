@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This class contains the attributes and methods of a employee
@@ -16,8 +17,7 @@ public class Employee implements Serializable {
     private String dateOfBirth;
     private String password;
     private boolean administrator;
-    private int numOrders;
-    private double quantitySold;
+    private ArrayList<QuantitySold> quantitiesSold;
 
 
     public Employee(String name, String id, String dateOfBirth, String password, boolean administrator) {
@@ -26,6 +26,7 @@ public class Employee implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.password = password;
         this.administrator = administrator;
+        this.quantitiesSold = new ArrayList<QuantitySold>();
     }
 
     public boolean isAdministrator() {
@@ -64,20 +65,12 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public int getNumOrders() {
-        return numOrders;
+    public ArrayList<QuantitySold> getQuantitiesSold() {
+        return quantitiesSold;
     }
 
-    public void addOrder(){
-        numOrders++;
-    }
-
-    public double getQuantitySold() {
-        return quantitySold;
-    }
-
-    public void increaseQuantitySold(double quantitySold){
-        this.quantitySold += quantitySold;
+    public void addQuantitySold(QuantitySold quantitySold){
+        this.quantitiesSold.add(quantitySold);
     }
 
     @Override

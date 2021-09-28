@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Restaurant;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Collections;
 
@@ -20,7 +21,7 @@ import java.util.Collections;
 public class AdministratorWindow extends Stage {
     // Menu items for the Personal module
     private MenuItem addEmployeeItem, showListEmployeesItem, changePasswordItem, addSaucerItem, closeItem, employeesReportMI, saucersReportMI;
-    private ImageView imageView;
+    private ImageView imageView, imageSaucer, imageSaucer2;
     // Menu items for the Inventory module
     private MenuItem addIngredientITEM, increaseIngredientITEM, decreaseIngredientITEM, deleteIngredientITEM, showIngredientITEM, showMenuMI;
     private MenuItem viewOrders,registerOrder,changeOrder;
@@ -39,6 +40,8 @@ public class AdministratorWindow extends Stage {
             employeesReportMI = (MenuItem) loader.getNamespace().get("employeesReportMI");
             saucersReportMI = (MenuItem) loader.getNamespace().get("saucersReportMI");
             imageView = (ImageView) loader.getNamespace().get("imageView");
+            imageSaucer = (ImageView) loader.getNamespace().get("imageSaucer");
+            imageSaucer2 = (ImageView) loader.getNamespace().get("imageSaucer2");
             // Fxml for the Inventory module
             addIngredientITEM = (MenuItem) loader.getNamespace().get("addIngredientITEM");
             increaseIngredientITEM = (MenuItem) loader.getNamespace().get("increaseIngredientITEM");
@@ -52,9 +55,7 @@ public class AdministratorWindow extends Stage {
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 
-            FileInputStream input = new FileInputStream("src/img/loginImage.jpg");
-            Image image = new Image(input);
-            imageView.setImage(image);
+
 
             init();
         } catch (Exception ex){
@@ -66,6 +67,8 @@ public class AdministratorWindow extends Stage {
      * this method execute the actions of fxml components
      */
     private void init(){
+        loadImages();
+
         addEmployeeItem.setOnAction(e -> {
             AddEmployee addEmployee = new AddEmployee();
             addEmployee.show();
@@ -155,6 +158,23 @@ public class AdministratorWindow extends Stage {
         saucersReportMI.setOnAction(event -> {
             Restaurant.getInstance().generateReportSaucers();
         });
+    }
+
+    private void loadImages(){
+        try{
+            File file = new File("src/img/loginImage.jpg");
+            FileInputStream input = new FileInputStream(file);
+            Image image = new Image(input);
+            imageView.setImage(image);
+
+            File f = new File("src/img/comida.jpg");
+            FileInputStream fis = new FileInputStream(f);
+            Image imageS = new Image(fis);
+            imageSaucer.setImage(imageS);
+            imageSaucer2.setImage(imageS);
+        } catch (Exception ex){
+
+        }
     }
 }
 

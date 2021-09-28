@@ -3,9 +3,7 @@ package ui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Restaurant;
 
@@ -19,6 +17,8 @@ public class IncreaseIngredient extends Stage {
 
     private TextField ingredientName,amountAdd;
     private Button addBtn;
+    private MenuButton ingredientsMB;
+
     public IncreaseIngredient(){
 
 
@@ -29,6 +29,9 @@ public class IncreaseIngredient extends Stage {
             ingredientName = (TextField) loader.getNamespace().get("ingredientName");
             amountAdd = (TextField) loader.getNamespace().get("amountAdd");
             addBtn = (Button) loader.getNamespace().get("addBtn");
+            ingredientsMB = (MenuButton) loader.getNamespace().get("ingredientsMB");
+
+            ingredientsMB.getItems().addAll(Restaurant.getInstance().getIngredientsInventory().getMenuItems());
 
             Scene scene = new Scene(root,412,258);
             setScene(scene);
@@ -40,9 +43,14 @@ public class IncreaseIngredient extends Stage {
     }
 
     public void init(){
+        for(MenuItem mi: Restaurant.getInstance().getIngredientsInventory().getMenuItems()){
+            mi.setOnAction(e -> {
+                ingredientsMB.setText(mi.getText());
+            });
+        }
 
         addBtn.setOnAction(event -> {
-            String ingName = ingredientName.getText();
+            String ingName = ingredientsMB.getText();
             Double amount = Double.parseDouble(amountAdd.getText());
             boolean centinel = false;
             if(amount<=0){

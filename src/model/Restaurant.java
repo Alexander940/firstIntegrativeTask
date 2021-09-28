@@ -79,7 +79,13 @@ public class Restaurant {
         String report = "Name - Orders num - Quantity sold\n";
 
         for(Employee employee: employeesInventory.getEmployees()){
-            report += employee.getName() + " - " + employee.getNumOrders() + " - " + employee.getQuantitySold() + "\n";
+            int ordersSold = 0;
+            double priceOrders = 0;
+            for(QuantitySold quantitySold: employee.getQuantitiesSold()){
+                ordersSold++;
+                priceOrders += quantitySold.getPriceOrder();
+            }
+            report += employee.getName() + " - " + ordersSold + " - " + priceOrders + "\n";
         }
 
         return report;

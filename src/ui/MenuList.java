@@ -30,6 +30,11 @@ public class MenuList extends Stage {
             table.getColumns().addAll(nameColumn, priceColumn);
             table.setItems(Restaurant.getInstance().getMenu().getSaucers());
 
+            nameColumn.setMaxWidth(300);
+            priceColumn.setMaxWidth(300);
+            priceColumn.setMinWidth(300);
+            nameColumn.setMinWidth(300);
+
             Scene scene = new Scene(root, 600, 400);
             setScene(scene);
 

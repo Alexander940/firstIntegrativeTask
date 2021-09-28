@@ -25,7 +25,7 @@ public class AddIngredientSaucer extends Stage {
             cuantityTF = (TextField) loader.getNamespace().get("cuantityTF");
             addBtn = (Button) loader.getNamespace().get("addBtn");
 
-            ingredientMB.getItems().addAll(Restaurant.getInstance().getMenu().getItems());
+            ingredientMB.getItems().addAll(Restaurant.getInstance().getIngredientsInventory().getMenuItems());
 
             Scene scene = new Scene(root, 300, 200);
             setScene(scene);
@@ -44,7 +44,7 @@ public class AddIngredientSaucer extends Stage {
             this.close();
         });
 
-        for(MenuItem mi : Restaurant.getInstance().getMenu().getItems()){
+        for(MenuItem mi : Restaurant.getInstance().getIngredientsInventory().getMenuItems()){
             mi.setOnAction(event->{
                 ingredientMB.setText(mi.getText());
             });
