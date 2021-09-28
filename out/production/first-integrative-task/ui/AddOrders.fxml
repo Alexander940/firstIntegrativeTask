@@ -13,17 +13,8 @@
       <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="235.0" prefHeight="24.0" prefWidth="176.0" promptText="Choose a date" />
       <Button fx:id="addSaucerCombo" layoutX="263.0" layoutY="188.0" mnemonicParsing="false" text="Add saucer" />
       <TableView fx:id="table" layoutX="201.0" layoutY="22.0" prefHeight="148.0" prefWidth="200.0" />
-<<<<<<< HEAD
-
-
-
-      <TextField fx:id="employeeNameTF" layoutX="226.0" layoutY="281.0" />
-      <Label layoutX="120.0" layoutY="285.0" text="Employee's name" />
-
-=======
       <TextField fx:id="employeeNameTF" layoutX="226.0" layoutY="281.0" />
       <Label layoutX="120.0" layoutY="285.0" text="Employee's name" />
       <Button fx:id="getOutBtn" layoutX="50.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" />
->>>>>>> 1b5b5f520619f503cd9ee9f6dd5d2319a7b6f013
    </children>
 </AnchorPane>

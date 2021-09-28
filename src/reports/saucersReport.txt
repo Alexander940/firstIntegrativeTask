@@ -1,0 +1,3 @@
+Name - Units sold - Quantity paid
+Empanadas - 1 - 2000.0
+Combo sopa - 2 - 10000.0

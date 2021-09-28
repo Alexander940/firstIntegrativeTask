@@ -114,17 +114,15 @@ public class EmployeesInventory implements Serializable {
      * @return it returns true if the user exists and the password and input are equals
      */
     public boolean verificationLogin(String id ,String inputPassword){
-        boolean verification = false;
-
         for(Employee employee: employees){
             if(employee.getId().equals(id)){
                 if(employee.getPassword().equals(inputPassword)){
-                    verification = true;
+                    return true;
                 }
             }
         }
 
-        return verification;
+        return false;
     }
 
     /**

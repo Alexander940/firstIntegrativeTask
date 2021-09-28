@@ -103,7 +103,6 @@ public class Restaurant {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String actualDate = dtf.format(LocalDateTime.now());
 
-
         for(Saucer saucer: menu.getSaucers()){
             for(int i = 0; i < saucer.getQuantitySold().size(); i++){
                 if(saucer.getQuantitySold().get(i).getDate().equals(actualDate)){
@@ -111,6 +110,7 @@ public class Restaurant {
                 }
             }
             report += saucer.getName() + " - " + unitsSold + " - " + (unitsSold* saucer.getPrice()) + "\n";
+            unitsSold = 0;
         }
 
         return report;
