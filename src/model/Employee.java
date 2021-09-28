@@ -19,12 +19,17 @@ public class Employee implements Serializable {
     private int numOrders;
     private double quantitySold;
 
+
     public Employee(String name, String id, String dateOfBirth, String password, boolean administrator) {
         this.name = name;
         this.id = id;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
         this.administrator = administrator;
+    }
+
+    public boolean isAdministrator() {
+        return administrator;
     }
 
     public String getName() {
